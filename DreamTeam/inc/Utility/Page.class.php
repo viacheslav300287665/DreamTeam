@@ -1,7 +1,7 @@
 <?php
 class Page  {
 
-    public static $title = "LMS";
+    public static $title = "Online Ratings";
 
     static function header() { ?>
             <!DOCTYPE html>
@@ -94,6 +94,71 @@ class Page  {
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" value="submit" type="submit">
 							Login
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+    <?php }
+
+static function showSearchForm() { ?>    
+    <div class="limiter">
+		<div class="container-login100" style="background-image: url('inc/Utility/css/images/bg-01.jpg');">
+			<div class="wrap-login100">
+				<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST" class="login100-form validate-form">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Search
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" name="usernameSearch" placeholder="Professor's Name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+                        <input type="hidden" name="action" value="search">
+						<button class="login100-form-btn" value="submit" type="submit">
+							Search
+						</button>
+                        <label for="hidden">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <input type="hidden" name="action" value="logout">
+                        <button class="login100-form-btn" value="logout" type="submit">
+							Logout
+						</button>
+					</div>
+<br>
+</br><br>
+</br><br>
+</br>
+                    <span class="login100-form-title p-b-34 p-t-27">
+						Add New Professor
+					</span>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter college">
+						<input class="input100" type="text" name="collegeAdd" placeholder="Name of School">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" name="usernameAdd" placeholder="Professor's Name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter department">
+						<input class="input100" type="text" name="departmentAdd" placeholder="Department">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+                        <input type="hidden" name="action" value="create">
+						<button class="login100-form-btn" value="create" type="submit">
+							Create
 						</button>
 					</div>
 				</form>
