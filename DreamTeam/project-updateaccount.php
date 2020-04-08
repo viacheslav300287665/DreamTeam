@@ -10,11 +10,23 @@ require_once("inc/Utility/Page.class.php");
 
 session_start();
 
+//$_SERVER["REQUEST_METHOD"] == "POST" 
+if (!empty($_POST)) { 
+    if($_POST["action"] == "logout"){
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $test = $_SESSION['user'];
+        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-logout.php');
+    }
+    else if($_POST["action"] == "search"){
 
-    $test = $_SESSION['user'];
-    header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-logout.php');
+        $test = $_SESSION['user'];
+        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-logout.php');
+    }
+    else if($_POST["action"] == "create"){
+
+        $test = $_SESSION['user'];
+        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-logout.php');
+    }
 }
 //Verify the Login
 LoginManager::verifyLogin();
@@ -25,7 +37,7 @@ UserDAO::init();
 $currentUser = $_SESSION['user'];
 
 Page::header();
-Page::showUserDetails($currentUser);
+Page::showSearchForm();
 Page::footer();
 
 ?>
