@@ -11,7 +11,7 @@ require_once("inc/Utility/Page.class.php");
 
 /**
  * To login-> UserName: cprydden0
- * Password: $2y$10$JHV0Y0yfYhTA2rTA//1CweCZWwfkGEHxK/TnT8VIJIwjDTlGkCCDi
+ * Password: cprydden0
  */
 
  
@@ -27,7 +27,7 @@ if (!empty($_POST)) {
 
         //Check the password
        // if ($authUser->verifyPassword($_POST['password']))  {
-        if ( $currentUser->getPassword() == $_POST['password'])  {
+        if ( $currentUser->getUserName() == $_POST['password'])  {
 
             //Start the session
             session_start();
