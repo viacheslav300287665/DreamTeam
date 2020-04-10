@@ -173,4 +173,137 @@ static function showSearchForm() { ?>
     <?php
     }
 
+    static function listProffesorReviews(Instructor $instructor, array $ratings, $courses) { ?>
+            <h1>Rating for Proffesor <?php echo $instructor->getFirstName() . " " . $instructor->getLastName() ?></h1>
+            <h4>Courses that <?php echo $instructor->getFirstName() . " " . $instructor->getLastName() ?> is teaching </h1>
+            <table border="1">
+            <thead><th>CourseShortName</th><th>CourseLongName</th>
+            <?php
+            foreach ($courses as $course){
+                echo "<tr><td>" . $course->getCourseShortName() . "</td><td>" . $course->getCourseLongName() . "</td><td>";
+            }
+            ?>
+            </table>
+
+            <h4>Students Rating</h4>
+            <table border="1">
+            <thead><th>Rating</th><th>Review</th>
+            <?php 
+            foreach ($ratings as $rating) { 
+                echo "<tr><td>" . $rating->getRating() . "</td><td>" . $rating->getReview() . "</td><tr>";       
+           }
+            ?>
+            </table>
+     <?php }
+
+static function showRegistrationForm() { ?>    
+    <div class="limiter">
+		<div class="container-login100" style="background-image: url('inc/Utility/css/images/bg-01.jpg');">
+			<div class="wrap-login100">
+				<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST" class="login100-form validate-form">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+					<span class="login100-form-title p-b-34 p-t-27">
+						Registration Form
+					</span>
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter First Name">
+						<input class="input100" type="text" name="firstname" placeholder="First Name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+                    <div class="wrap-input100 validate-input" data-validate = "Enter Last Name">
+						<input class="input100" type="text" name="lastname" placeholder="Last Name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+                    <div class="wrap-input100 validate-input" data-validate = "Enter Email">
+						<input class="input100" type="email" name="email" placeholder="Email">
+						<span class="focus-input100" data-placeholder="&#x2709;"></span>
+					</div>
+					<div class="container-login100-form-btn">
+                    <input type="hidden" name="action" value="create">
+						<button class="login100-form-btn" value="submit" type="submit">
+							Register
+				</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+
+	</div>
+    <?php }
+
+public static function listCourses(array $courses) { ?>
+<h3>List of available Courses<button class="login100-form-btn" onclick="myFunction()" style="float:right">Add More</button></h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>CourseID</th>
+                <th>Course ShortName</th>
+                <th>Course Long Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+        </thead>
+
+        <?php
+
+        //List all the courses
+        foreach ($courses as $course) {
+            echo "<tr>";
+            echo "<td>".$course->getCourseID()."</td>";
+            echo "<td>".$course->getCourseShortName()."</td>";
+            echo "<td>".$course->getCourseLongName()."</td>";
+            echo '<td><a href="?action=edit&id='.$course->getCourseID().'">Edit</td>';
+            echo '<td><a href="?action=delete&id='.$course->getCourseID().'">Delete</td>';
+            echo "</tr>";
+        } ?>
+        </table>
+                <script>
+                function myFunction() {
+        var x = document.getElementById("myForm");
+            x.style.display = "block";
+        
+        }
+        </script>
+    
+<?php }
+//add a course
+public static function createCourseForm() {?>
+    <hr>
+    
+    <form id="myForm" ACTION="" METHOD="POST" style="display:none">
+    <h3>Create Course</h3>
+        <table>
+          <tr>
+               <td>Course Short Name</td>
+               <td><input type="text" name="courseshortname"></td>
+          </tr>
+          <tr>
+               <td>Course Long Name</td>
+               <td><input type = "text" name = "courselongname"></td>
+          </tr>
+        </table>
+        <input type="hidden" name="action" value="create">
+        
+        <input type="submit" value="create">
+    </form>
+
+<?php
+                    }
+
+
+
+        
 }
+
+
+?>

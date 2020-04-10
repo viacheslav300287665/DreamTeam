@@ -2,9 +2,9 @@
 
 //Require
 require_once("inc/config.inc.php");
-require_once("inc/Entity/User.class.php");
-require_once("inc/Utility/PDOAgent.class.php");
-require_once("inc/Utility/UserDAO.class.php");
+require_once("inc/Entity/Student.class.php");
+require_once("inc/Utility/PDOService.class.php");
+require_once("inc/Utility/StudentDAO.class.php");
 require_once("inc/Utility/LoginManager.class.php");
 require_once("inc/Utility/Page.class.php");
 
@@ -21,6 +21,7 @@ if (!empty($_POST)) {
 
         $test = $_SESSION['user'];
         header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-logout.php');
+        var_dump($_POST);
     }
     else if($_POST["action"] == "create"){
 
@@ -32,7 +33,7 @@ if (!empty($_POST)) {
 LoginManager::verifyLogin();
 
 //Initialize the user DAO
-UserDAO::init();
+StudentDAO::init();
 //Get the current User thats logged in from the session
 $currentUser = $_SESSION['user'];
 
