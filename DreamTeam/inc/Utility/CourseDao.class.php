@@ -34,6 +34,22 @@ class CourseDAO  {
         self::$_db->execute();
         return self::$_db->resultSet();
     }
+    static function createCourse(Course $newCourse) {
+
+        //Create means INSERT
+        $sql="INSERT INTO Course (CourseShortName,CourseLongName)
+        VALUES (:shortname,:longname);";
+
+        //QUERY BIND EXECUTE RETURN
+        self::$_db->query($sql);
+        
+        self::$_db->bind(":shortname",$newCourse->getCourseShortName());
+        self::$_db->bind(":longname",$newCourse->getCourseLongName());
+       
+        self::$_db->execute();
+        
+        return self::$_db->lastInsertedId();
+    }
 }
 
 

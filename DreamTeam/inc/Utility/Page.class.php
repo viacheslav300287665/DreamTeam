@@ -242,4 +242,68 @@ static function showRegistrationForm() { ?>
 	</div>
     <?php }
 
+public static function listCourses(array $courses) { ?>
+<h3>List of available Courses<button class="login100-form-btn" onclick="myFunction()" style="float:right">Add More</button></h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>CourseID</th>
+                <th>Course ShortName</th>
+                <th>Course Long Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+        </thead>
+
+        <?php
+
+        //List all the courses
+        foreach ($courses as $course) {
+            echo "<tr>";
+            echo "<td>".$course->getCourseID()."</td>";
+            echo "<td>".$course->getCourseShortName()."</td>";
+            echo "<td>".$course->getCourseLongName()."</td>";
+            echo '<td><a href="?action=edit&id='.$course->getCourseID().'">Edit</td>';
+            echo '<td><a href="?action=delete&id='.$course->getCourseID().'">Delete</td>';
+            echo "</tr>";
+        } ?>
+        </table>
+                <script>
+                function myFunction() {
+        var x = document.getElementById("myForm");
+            x.style.display = "block";
+        
+        }
+        </script>
+    
+<?php }
+//add a course
+public static function createCourseForm() {?>
+    <hr>
+    
+    <form id="myForm" ACTION="" METHOD="POST" style="display:none">
+    <h3>Create Course</h3>
+        <table>
+          <tr>
+               <td>Course Short Name</td>
+               <td><input type="text" name="courseshortname"></td>
+          </tr>
+          <tr>
+               <td>Course Long Name</td>
+               <td><input type = "text" name = "courselongname"></td>
+          </tr>
+        </table>
+        <input type="hidden" name="action" value="create">
+        
+        <input type="submit" value="create">
+    </form>
+
+<?php
+                    }
+
+
+
+        
 }
+
+
+?>

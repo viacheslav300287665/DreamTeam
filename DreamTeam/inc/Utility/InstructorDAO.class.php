@@ -9,7 +9,7 @@ class InstructorDAO  {
 
     static function initialize()    {
       //Create the PDOService instance locally, be sure to specify the class.
-      self::$_db=new PDOAgent('Instructor');
+      self::$_db=new PDOService('Instructor');
     }
 
     static function createInstructor(Instructor $newInstructor) {
