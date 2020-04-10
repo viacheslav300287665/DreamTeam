@@ -9,7 +9,7 @@ class RatingDAO  {
 
     static function initialize()    {
       //Create the PDOService instance locally, be sure to specify the class.
-      self::$_db=new PDOAgent('Rating');
+      self::$_db=new PDOService('Rating');
     }
 
     static function createRating(Rating $newRating) {
@@ -60,7 +60,7 @@ class RatingDAO  {
         self::$_db->query($sql);
         self::$_db->bind(":instructorid", $instructor->getInstructorID());
         self::$_db->execute();
-        return self::$_db->getResultSet();
+        return self::$_db->resultSet();
     }
     
     static function updateRating (Rating $ratingToUpdate) {

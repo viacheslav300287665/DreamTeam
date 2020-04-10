@@ -33,7 +33,7 @@ class Student {
         $this->Username=$username;
     }
     public function setPassword(string $password){
-        $this->Username=$username;
+        $this->Password=$password;
     }
     
    //getters
@@ -57,13 +57,9 @@ class Student {
         return $this->Password;
     }
     function verifyPassword(string $passwordToVerify) {
+       
         //Return a boolean based on verifying if the password given is correct for the current user
-        if($this->password == $passwordToVerify){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return password_verify($passwordToVerify,$this->getPassword());
         
     }
 }

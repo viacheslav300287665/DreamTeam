@@ -1,12 +1,10 @@
 <?php
 
 require_once("inc/config.inc.php");
-require_once("inc/Entity/User.class.php");
 require_once("inc/Entity/Instructor.class.php");
 require_once("inc/Entity/Rating.class.php");
 require_once("inc/Entity/Course.class.php");
-require_once("inc/Utility/PDOAgent.class.php");
-require_once("inc/Utility/UserDAO.class.php");
+require_once("inc/Utility/PDOService.class.php");
 require_once("inc/Utility/InstructorDAO.class.php");
 require_once("inc/Utility/CourseDAO.class.php");
 require_once("inc/Utility/RatingDAO.class.php");
