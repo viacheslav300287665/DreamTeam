@@ -467,7 +467,7 @@ public static function createCourseForm() {?>
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items" href="single-listing.html">
+                            <a class="arrange-items">
                                 <div class="arrange-pic">
                                     <img src="inc/Utility/css-professor/img/bg.png" alt="">
                                     <div class="rating">4.9</div>
@@ -481,7 +481,7 @@ public static function createCourseForm() {?>
                             </a>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items" href="single-listing.html">
+                            <a class="arrange-items">
                                 <div class="arrange-pic">
                                     <img src="inc/Utility/css-professor/img/bg.png" alt="">
                                     <div class="rating">4.9</div>
@@ -495,7 +495,7 @@ public static function createCourseForm() {?>
                             </a>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items" href="single-listing.html">
+                            <a class="arrange-items">
                                 <div class="arrange-pic">
                                     <img src="inc/Utility/css-professor/img/bg.png" alt="">
                                     <div class="rating">4.9</div>
@@ -509,7 +509,7 @@ public static function createCourseForm() {?>
                             </a>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items" href="single-listing.html">
+                            <a class="arrange-items">
                                 <div class="arrange-pic">
                                     <img src="inc/Utility/css-professor/img/bg.png" alt="">
                                     <div class="rating">4.9</div>
@@ -523,7 +523,7 @@ public static function createCourseForm() {?>
                             </a>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items" href="single-listing.html">
+                            <a class="arrange-items">
                                 <div class="arrange-pic">
                                     <img src="inc/Utility/css-professor/img/bg.png" alt="">
                                     <div class="rating">4.9</div>
@@ -537,7 +537,7 @@ public static function createCourseForm() {?>
                             </a>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items" href="single-listing.html">
+                            <a class="arrange-items">
                                 <div class="arrange-pic">
                                     <img src="inc/Utility/css-professor/img/bg.png" alt="">
                                     <div class="rating">4.9</div>
