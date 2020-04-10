@@ -228,10 +228,15 @@ static function showRegistrationForm() { ?>
 						<span class="focus-input100" data-placeholder="&#x2709;"></span>
 					</div>
 					<div class="container-login100-form-btn">
-                    <input type="hidden" name="action" value="create">
+                        <input type="hidden" name="action" value="create">
 						<button class="login100-form-btn" value="submit" type="submit">
 							Register
-				</button>
+				        </button>
+					</div>
+					<div class="text-center p-t-90">
+                        <a class="txt1" href="project-login.php">
+                            Already have an account?
+                        </a>
 					</div>
 				</form>
 			</div>

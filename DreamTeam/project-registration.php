@@ -24,7 +24,10 @@ if ($_POST["action"] == "create")    {
     $newStudent->setPassword($storedHash);
     //Send the section to the DAO to be created
     StudentDAO::createStudent($newStudent);
-}
+
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/project-login.php');
+
+    }
 }
 Page::header();
 Page::showRegistrationForm();
