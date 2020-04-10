@@ -300,7 +300,35 @@ public static function createCourseForm() {?>
 <?php
                     }
 
-
+                    public static function editCourseForm(Course $courseToEdit) { ?>
+                        <hr>
+                        <h3>Edit Course - <?php echo $courseToEdit->getCourseID(); ?></h3>
+                        <form ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
+                            <table>
+                                <tr>
+                                    <td>Course ID</td>
+                                    <td>
+                                        <?php echo $courseToEdit->getCourseID() ;?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Course Short Name</td>
+                                <td><input type="text" name="courseshortname" value="<?php echo $courseToEdit->getCourseShortName(); ?>"></td>
+                           </tr>
+                           <tr>
+                                <td>Course Long Name</td>
+                                <td><input type = "text" name = "courselongname" value="<?php echo $courseToEdit->getCourseLongName(); ?>"></td>
+                           </tr>
+                            </table>
+                            <input type="hidden" name="action" value="edit">
+                            <input type="hidden" name="courseid" value="<?php  echo $courseToEdit->getCourseID(); ?>">
+                            <input type="submit" value="edit">
+                            
+                            
+                        </form>
+                
+                    <?php
+                                        }
 
         
 }

@@ -50,6 +50,46 @@ class CourseDAO  {
         
         return self::$_db->lastInsertedId();
     }
+    static function updateCourse (Course $courseToUpdate) {
+        //update means UPDATE query
+    $sql = "UPDATE Course SET CourseShortName = :courseshortname,CourseLongName=:courselongname
+            WHERE CourseID=:courseid;";
+        
+    self::$_db->query($sql);
+    
+    self::$_db->bind(":courseshortname",$courseToUpdate->getCourseShortName());
+    self::$_db->bind(":courselongname",$courseToUpdate->getCourseLongName());
+    self::$_db->bind(":courseid",$courseToUpdate->getCourseID());
+    self::$_db->execute();
+    return self::$_db->rowCount();
+
+
+    //QUERY BIND EXECUTE RETURN THE RESULTS
+
+
+}
+static function getCourse(int $courseID)  {
+
+    //Gget means get one
+    $sql="SELECT * FROM Course WHERE CourseID=:courseid;";
+
+    //QUERY, BIND, EXECUTE, RETURN
+    self::$_db->query($sql);
+    self::$_db->bind(":courseid",$courseID);
+    self::$_db->execute();
+    return self::$_db->singleResult();    
+}
+static function deleteCourse(int $courseID) {
+
+
+    $sql="DELETE FROM Course WHERE CourseID=:courseid;";
+    self::$_db->query($sql);
+    self::$_db->bind(":courseid",$courseID);
+    self::$_db->execute();
+    return self::$_db->rowCount();
+   
+
+}
 }
 
 
