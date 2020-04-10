@@ -20,13 +20,13 @@ if (!empty($_POST)) {
     else if($_POST["action"] == "search"){
 
         $test = $_SESSION['user'];
-        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-logout.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-proffessor.php');
         var_dump($_POST);
     }
     else if($_POST["action"] == "create"){
 
         $test = $_SESSION['user'];
-        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-logout.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-proffessor.php');
     }
 }
 //Verify the Login

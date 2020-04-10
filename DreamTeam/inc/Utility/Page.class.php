@@ -333,7 +333,304 @@ public static function createCourseForm() {?>
                         </form>
                 
                     <?php
-                                        }
+    }
+
+    static function headerForProfessor() { ?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <title><?php echo self::$title; ?></title>
+            <meta charset="UTF-8">
+            <meta name="description" content="Yoga Studio Template">
+            <meta name="keywords" content="Yoga, unica, creative, html">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <!-- from https://colorlib.com/wp/template/locals-directory/-->
+            <!-- Google Font -->
+            <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&display=swap" rel="stylesheet">
+
+            <!-- Css Styles -->
+            <link rel="stylesheet" href="inc/Utility/css-professor/css/bootstrap.min.css" type="text/css">
+            <link rel="stylesheet" href="inc/Utility/css-professor/css/font-awesome.min.css" type="text/css">
+            <link rel="stylesheet" href="inc/Utility/css-professor/css/flaticon.css" type="text/css">
+            <link rel="stylesheet" href="inc/Utility/css-professor/css/nice-select.css" type="text/css">
+            <link rel="stylesheet" href="inc/Utility/css-professor/css/owl.carousel.min.css" type="text/css">
+            <link rel="stylesheet" href="inc/Utility/css-professor/css/magnific-popup.css" type="text/css">
+            <link rel="stylesheet" href="inc/Utility/css-professor/css/slicknav.min.css" type="text/css">
+            <link rel="stylesheet" href="inc/Utility/css-professor/css/style.css" type="text/css">
+        </head>
+        <body>
+       
+<?php }
+
+    static function searchFormProfessor() { ?>
+        <!-- Page Preloder -->
+        <div id="preloder">
+                <div class="loader"></div>
+            </div>
+
+            <!-- Hero Section Begin -->
+            <section class="hero-section set-bg" data-setbg="inc/Utility/css-professor/img/bg-01.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="hero-text">
+                                <img src="inc/Utility/css-professor/img/placeholder.png" alt="">
+                                <h1>Professor's Name</h1>
+                                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST" class="filter-search">
+                                <br>
+                                    <div class="location-search">
+                                        <h5>Professor's Name</h5>
+                                        <input class="search" type="text" name="search" size="50">
+                                    </div>
+                                    <button type="submit">Search New</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Hero Section End -->
+
+            <br></br>
+    <?php }
+
+    static function reviewsSection() { ?>
+        <!-- Filter Section Begin -->
+    <section class="filter-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="filter-left">
+                        <div class="rating-filter">
+                            <h3>Ratings</h3>
+                            <div class="rating-option">
+                                <div class="ro-item">
+                                    <input type="radio">
+                                    <label class="active">5.0</label>
+                                    <div class="rating-pic">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="ro-item">
+                                    <input type="radio">
+                                    <label>4.0</label>
+                                    <div class="rating-pic">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                    </div>
+                                </div>
+                                <div class="ro-item">
+                                    <input type="radio">
+                                    <label>3.0</label>
+                                    <div class="rating-pic">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                    </div>
+                                </div>
+                                <div class="ro-item">
+                                    <input type="radio">
+                                    <label>2.0</label>
+                                    <div class="rating-pic">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                    </div>
+                                </div>
+                                <div class="ro-item">
+                                    <input type="radio">
+                                    <label>1.0</label>
+                                    <div class="rating-pic">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                        <i class="fa fa-star grey-bg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6">
+                            <a class="arrange-items" href="single-listing.html">
+                                <div class="arrange-pic">
+                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
+                                    <div class="rating">4.9</div>
+                                    <div class="tic-text">Student's Name</div>
+                                </div>
+                                <div class="arrange-text">
+                                    <h5>Course Number</h5>
+                                    <span>Date</span>
+                                    <p>Full Review</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <a class="arrange-items" href="single-listing.html">
+                                <div class="arrange-pic">
+                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
+                                    <div class="rating">4.9</div>
+                                    <div class="tic-text">Student's Name</div>
+                                </div>
+                                <div class="arrange-text">
+                                    <h5>Course Number</h5>
+                                    <span>Date</span>
+                                    <p>Full Review</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <a class="arrange-items" href="single-listing.html">
+                                <div class="arrange-pic">
+                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
+                                    <div class="rating">4.9</div>
+                                    <div class="tic-text">Student's Name</div>
+                                </div>
+                                <div class="arrange-text">
+                                    <h5>Course Number</h5>
+                                    <span>Date</span>
+                                    <p>Full Review</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <a class="arrange-items" href="single-listing.html">
+                                <div class="arrange-pic">
+                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
+                                    <div class="rating">4.9</div>
+                                    <div class="tic-text">Student's Name</div>
+                                </div>
+                                <div class="arrange-text">
+                                    <h5>Course Number</h5>
+                                    <span>Date</span>
+                                    <p>Full Review</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <a class="arrange-items" href="single-listing.html">
+                                <div class="arrange-pic">
+                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
+                                    <div class="rating">4.9</div>
+                                    <div class="tic-text">Student's Name</div>
+                                </div>
+                                <div class="arrange-text">
+                                    <h5>Course Number</h5>
+                                    <span>Date</span>
+                                    <p>Full Review</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <a class="arrange-items" href="single-listing.html">
+                                <div class="arrange-pic">
+                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
+                                    <div class="rating">4.9</div>
+                                    <div class="tic-text">Student's Name</div>
+                                </div>
+                                <div class="arrange-text">
+                                    <h5>Course Number</h5>
+                                    <span>Date</span>
+                                    <p>Full Review</p>
+                                </div>
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Filter Section End -->
+    <?php }
+
+    static function ratingsForm() { ?>
+
+        <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST" class="contact-form">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input type="number" placeholder="Your Rating (0/5)">
+                            </div>
+							&nbsp;
+							<div class="rating-pic">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <input type="text" placeholder="Course Number">
+                                <textarea placeholder="Your Experience"></textarea>
+                                <button type="submit">Submit Ratings</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php }
+
+
+    static function footerforProfessor() { ?>
+
+        <!-- Footer Section Begin -->
+        <footer class="footer-section spad">
+            <div class="container">
+                
+                <div class="row footer-bottom">
+                    <div class="col-lg-5 order-2 order-lg-1">
+                        <div class="copyright"><p class="text-white">
+                Created By Dikshit Sharma, Viacheslav Sierkov and Robin Sidhu. All rights reserved.
+                </p></div>
+                    </div>
+                    <div class="col-lg-7 text-center text-lg-right order-1 order-lg-2">
+                        <div class="footer-menu">
+                            <a href="project-logout.php">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section End -->
+
+        <!-- Js Plugins -->
+        <script src="inc/Utility/css-professor/js/jquery-3.3.1.min.js"></script>
+        <script src="inc/Utility/css-professor/js/bootstrap.min.js"></script>
+        <script src="inc/Utility/css-professor/js/jquery.magnific-popup.min.js"></script>
+        <script src="inc/Utility/css-professor/js/jquery.slicknav.js"></script>
+        <script src="inc/Utility/css-professor/js/owl.carousel.min.js"></script>
+        <script src="inc/Utility/css-professor/js/jquery.nice-select.min.js"></script>
+        <script src="inc/Utility/css-professor/js/mixitup.min.js"></script>
+        <script src="inc/Utility/css-professor/js/main.js"></script>
+        </body>
+
+        </html>
+
+        <?php }
+
 
         
 }
