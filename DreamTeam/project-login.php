@@ -2,9 +2,9 @@
 
 //Require Files
 require_once("inc/config.inc.php");
-require_once("inc/Entity/User.class.php");
-require_once("inc/Utility/PDOAgent.class.php");
-require_once("inc/Utility/UserDAO.class.php");
+require_once("inc/Entity/Student.class.php");
+require_once("inc/Utility/StudentDAO.class.php");
+require_once("inc/Utility/PDOService.class.php");
 require_once("inc/Utility/LoginManager.class.php");
 require_once("inc/Utility/Page.class.php");
 
@@ -20,14 +20,14 @@ if (!empty($_POST)) {
 
 
     //Initialize the DAO
-    UserDAO::init();
+    StudentDAO::init();
     //Get the current user 
-    $currentUser = UserDAO::getUser($_POST['username']);
+    $currentUser = StudentDAO::getStudent($_POST['username']);
     //Check the DAO returned an object of type user
 
         //Check the password
-       // if ($authUser->verifyPassword($_POST['password']))  {
-        if ( $currentUser->getUserName() == $_POST['password'])  {
+        if ($currentUser->verifyPassword($_POST['password']))  {
+        // if ( $currentUser->getUserName() == $_POST['password'])  {
 
             //Start the session
             session_start();

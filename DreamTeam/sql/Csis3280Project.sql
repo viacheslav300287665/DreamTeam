@@ -1,4 +1,4 @@
--- Lab07 Solution
+
 -- DROP the database if it exists
 DROP DATABASE IF EXISTS Csis3280Project;
 -- CREATE THE DATABASE
@@ -8,8 +8,10 @@ CREATE DATABASE Csis3280Project;
 
 -- Use the database
 USE Csis3280Project;
+
+
 DROP TABLE IF EXISTS Course;
--- Create the Employee Table (pick your own Entities for the next part)
+-- Create the Course Table 
 CREATE TABLE Course (
     CourseID INT PRIMARY KEY AUTO_INCREMENT,
     CourseShortName TINYTEXT NOT NULL,
@@ -33,7 +35,7 @@ CREATE TABLE Instructor (
 
 );
 DROP TABLE IF EXISTS Instructor_Course;
--- Create the Department_RSi_92039 Table
+
 CREATE TABLE Instructor_Course(
     InstructorID INT NOT NULL,
     CourseID INT NOT NULL,
@@ -47,7 +49,7 @@ CREATE TABLE Instructor_Course(
 );
 
 DROP TABLE IF EXISTS Rating;
--- Create the Department_RSi_92039 Table
+
 CREATE TABLE Rating(
     RatingID INT PRIMARY KEY AUTO_INCREMENT,
     InstructorID INT NOT NULL,
@@ -59,7 +61,7 @@ CREATE TABLE Rating(
 
    
 );
--- Create the Department_RSi_92039 Table
+
 DROP TABLE IF EXISTS Student;
 CREATE TABLE Student(
     StudentID INT PRIMARY KEY AUTO_INCREMENT,
@@ -95,7 +97,7 @@ VALUES ('1','5','awesome'),
 ('2','5','great');
 
 INSERT INTO Student(FirstName,LastName,Email,Username,Password)
-VALUES ('sam','hill','samhill@douglascollege.ca','sam_hill','test'),
-('johnie','walker','johniewalkerk@douglascollege.ca','johnie_walker','default');
+VALUES ('sam','hill','samhill@douglascollege.ca','sam_hill','sam_hill'),
+('johnie','walker','johniewalkerk@douglascollege.ca','johnie_walker','johnie_walker');
 
 

@@ -7,7 +7,7 @@ class StudentDAO   {
 
     static function init()  {
         //Initialize the internal PDO Agent
-        self::$_db = new PDOAgent('Student');
+        self::$_db = new PDOService('Student');
     }
     //create Student
     static function createStudent(Student $newStudent) {
