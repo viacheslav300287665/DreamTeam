@@ -381,7 +381,7 @@ public static function createCourseForm() {?>
                                 <br>
                                     <div class="location-search">
                                         <h5>Professor's Name</h5>
-                                        <input class="search" type="text" name="search" size="50">
+                                        <input class="search" type="text" name="search" size="50" placeholder="Firstname LastName">
                                     </div>
                                     <button type="submit">Search New</button>
                                 </form>
@@ -395,7 +395,7 @@ public static function createCourseForm() {?>
             <br></br>
     <?php }
 
-    static function reviewsSection() { ?>
+    static function reviewsSection(array $reviews, $c) { ?>
         <!-- Filter Section Begin -->
     <section class="filter-section spad">
         <div class="container">
@@ -466,90 +466,26 @@ public static function createCourseForm() {?>
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
+                        <?php
+                        foreach ($reviews as $review) {?>
                         <div class="col-lg-4 col-sm-6">
                             <a class="arrange-items">
                                 <div class="arrange-pic">
                                     <img src="inc/Utility/css-professor/img/bg.png" alt="">
-                                    <div class="rating">4.9</div>
+                                    <div class="rating"><?php echo $review->getRating();?></div>
                                     <div class="tic-text">Student's Name</div>
                                 </div>
                                 <div class="arrange-text">
                                     <h5>Course Number</h5>
                                     <span>Date</span>
-                                    <p>Full Review</p>
+                                    <p><?php echo $review->getReview(); ?></p>
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items">
-                                <div class="arrange-pic">
-                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
-                                    <div class="rating">4.9</div>
-                                    <div class="tic-text">Student's Name</div>
-                                </div>
-                                <div class="arrange-text">
-                                    <h5>Course Number</h5>
-                                    <span>Date</span>
-                                    <p>Full Review</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items">
-                                <div class="arrange-pic">
-                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
-                                    <div class="rating">4.9</div>
-                                    <div class="tic-text">Student's Name</div>
-                                </div>
-                                <div class="arrange-text">
-                                    <h5>Course Number</h5>
-                                    <span>Date</span>
-                                    <p>Full Review</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items">
-                                <div class="arrange-pic">
-                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
-                                    <div class="rating">4.9</div>
-                                    <div class="tic-text">Student's Name</div>
-                                </div>
-                                <div class="arrange-text">
-                                    <h5>Course Number</h5>
-                                    <span>Date</span>
-                                    <p>Full Review</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items">
-                                <div class="arrange-pic">
-                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
-                                    <div class="rating">4.9</div>
-                                    <div class="tic-text">Student's Name</div>
-                                </div>
-                                <div class="arrange-text">
-                                    <h5>Course Number</h5>
-                                    <span>Date</span>
-                                    <p>Full Review</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <a class="arrange-items">
-                                <div class="arrange-pic">
-                                    <img src="inc/Utility/css-professor/img/bg.png" alt="">
-                                    <div class="rating">4.9</div>
-                                    <div class="tic-text">Student's Name</div>
-                                </div>
-                                <div class="arrange-text">
-                                    <h5>Course Number</h5>
-                                    <span>Date</span>
-                                    <p>Full Review</p>
-                                </div>
-                            </a>
-                        </div>
+
+
+                        <?php }                    
+                        ?>
                         </div>
                     </div>
                 </div>
