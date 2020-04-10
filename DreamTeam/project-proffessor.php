@@ -51,6 +51,7 @@ if (!empty($_POST)){
             CourseDAO::initialize();
             $courses = CourseDAO::getInstructorCourse($instructor);
             Page::reviewsSection($reviews, $courses);
+            Page::ratingsForm();
         } else {
             //Show Error that $instructor is not found
         }
@@ -62,7 +63,7 @@ if (!empty($_POST)){
 //Follow this pattern to make it work right
 
 //Page::reviewsSection();
-Page::ratingsForm();
+
 Page::footerforProfessor();
 
 
