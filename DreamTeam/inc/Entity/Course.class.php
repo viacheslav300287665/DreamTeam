@@ -28,7 +28,7 @@ Class Course    {
     public function getCourseShortName():string{
         return $this->CourseShortName;
     }
-    public function getLongShortName():string{
+    public function getCourseLongName():string{
         return $this->CourseLongName;
     }
 

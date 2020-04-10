@@ -9,7 +9,7 @@ class InstructorDAO  {
 
     static function initialize()    {
       //Create the PDOService instance locally, be sure to specify the class.
-      self::$_db=new PDOService('Instructor');
+      self::$_db=new PDOAgent('Instructor');
     }
 
     static function createInstructor(Instructor $newInstructor) {
@@ -27,8 +27,6 @@ class InstructorDAO  {
         self::$_db->execute();
         
         return self::$_db->lastInsertedId();
-      
-
     }
     
     static function getInstructor(int $instructorID)  {
@@ -40,10 +38,17 @@ class InstructorDAO  {
         self::$_db->query($sql);
         self::$_db->bind(":instructorid",$instructorID);
         self::$_db->execute();
-        return self::$_db->singleResult();
-       
+        return self::$_db->singleResult();    
     }
-
+    static function getInstructorByName(string $firstName, string $lastName){
+        $sql = "SELECT * FROM Instructor where FirstName=:firstname AND LastName=:lastname;";
+        self::$_db->query($sql);
+        self::$_db->bind(":firstname", $firstName);
+        self::$_db->bind(":lastname", $lastName);
+        self::$_db->execute();
+        return self::$_db->singleResult();
+    }
+    
     static function getInstructors() {
 
         //No parameters so no bind

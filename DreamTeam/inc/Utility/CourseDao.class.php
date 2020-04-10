@@ -10,7 +10,7 @@ class CourseDAO  {
     //Initialize the CourseDAO
     static function initialize()    {
         //Remember to send in the course name
-        self::$_db=new PDOService('Course');
+        self::$_db=new PDOAgent('Course');
     }
 
     //Get all the courses
@@ -26,6 +26,13 @@ class CourseDAO  {
         
         //Return resultSet
         return self::$_db->resultSet();
+    }
+    static function getInstructorCourse(Instructor $instructor){
+        $sql = "SELECT Course.CourseID, Course.CourseShortName, Course.CourseLongName FROM Course, Instructor_Course where Instructor_Course.InstructorID=:instructorid and Instructor_Course.CourseID = Course.CourseID;";
+        self::$_db->query($sql);
+        self::$_db->bind(":instructorid", $instructor->getInstructorID());
+        self::$_db->execute();
+        return self::$_db->getResultSet();
     }
 }
 

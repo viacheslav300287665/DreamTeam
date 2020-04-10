@@ -31,7 +31,7 @@ public function getRatingID():int{
 public function getInstructorID():int{
     return $this->InstructorID;
 }
-public function getRating():int{
+public function getRating() :int{
     return $this->Rating;
 }
 public function getReview():string{

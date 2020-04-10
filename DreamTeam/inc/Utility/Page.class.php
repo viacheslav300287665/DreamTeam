@@ -173,4 +173,27 @@ static function showSearchForm() { ?>
     <?php
     }
 
+    static function listProffesorReviews(Instructor $instructor, array $ratings, $courses) { ?>
+            <h1>Rating for Proffesor <?php echo $instructor->getFirstName() . " " . $instructor->getLastName() ?></h1>
+            <h4>Courses that <?php echo $instructor->getFirstName() . " " . $instructor->getLastName() ?> is teaching </h1>
+            <table border="1">
+            <thead><th>CourseShortName</th><th>CourseLongName</th>
+            <?php
+            foreach ($courses as $course){
+                echo "<tr><td>" . $course->getCourseShortName() . "</td><td>" . $course->getCourseLongName() . "</td><td>";
+            }
+            ?>
+            </table>
+
+            <h4>Students Rating</h4>
+            <table border="1">
+            <thead><th>Rating</th><th>Review</th>
+            <?php 
+            foreach ($ratings as $rating) { 
+                echo "<tr><td>" . $rating->getRating() . "</td><td>" . $rating->getReview() . "</td><tr>";       
+           }
+            ?>
+            </table>
+     <?php }
+
 }

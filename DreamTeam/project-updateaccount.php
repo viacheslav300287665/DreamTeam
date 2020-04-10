@@ -21,6 +21,7 @@ if (!empty($_POST)) {
 
         $test = $_SESSION['user'];
         header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-logout.php');
+        var_dump($_POST);
     }
     else if($_POST["action"] == "create"){
 
