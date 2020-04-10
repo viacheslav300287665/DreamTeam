@@ -31,6 +31,8 @@ require_once("inc/Utility/Page.class.php");
 // Page::footer();
 //LoginManager::verifyLogin();
 
+
+//Follow this pattern to make it work right
 Page::headerForProfessor();
 Page::searchFormProfessor();
 Page::reviewsSection();
