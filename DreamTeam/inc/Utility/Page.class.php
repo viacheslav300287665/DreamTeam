@@ -405,10 +405,10 @@ public static function createCourseForm() {?>
                     <div class="filter-left">
                         <div class="rating-filter">
                             <h3>Ratings for <?php  echo $instructor->getFirstName() . " " . $instructor->getLastName();  ?></h3>
-                            <h5>Overall Quality <?php echo $avgForInstructor; ?> / 5 Based on <?php echo sizeof($reviews) ?> rating(s)</h5><br>
+                            <h5>Overall Quality <?php echo "<strong>" . sprintf("%.2f",$avgForInstructor) . "</strong>"; ?> / 5 Based on <?php echo sizeof($reviews) ?> rating(s)</h5><br>
                             <div class="rating-option">   
                             <div class="ro-item">                                                                                               
-                                    <label><?php echo $avgForInstructor ?></label>
+                                    <label><?php echo sprintf("%.2f",$avgForInstructor); ?></label>
                                     <div class="rating-pic">
                                         <?php 
                                         for ($i = 0; $i < round($avgForInstructor); $i++) {?>
@@ -454,7 +454,7 @@ public static function createCourseForm() {?>
     <!-- Filter Section End -->
     <?php }
 
-    static function ratingsForm() { ?>
+    static function ratingsForm($courses, Instructor $instructor) { ?>
 
         <!-- Contact Section Begin -->
     <section class="contact-section spad">
@@ -463,22 +463,31 @@ public static function createCourseForm() {?>
                 <div class="col-lg-12">
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST" class="contact-form">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <input type="number" name="ratingNumber" placeholder="Your Rating (0/5)">
-                            </div>
-							&nbsp;
-							<div class="rating-pic">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                            </div>
+                            
                             <div class="col-lg-12 text-center">
-                                <input type="text" name="courseNumber" placeholder="Course Number">
+                                <label style="float:left;">Select Grade</label>
+                                <select name="ratingNumber" class="browser-default custom-select" style="margin-bottom: 3%;">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                </select>  
+                                <label style="float:left;">Select Course</label>                
+                                <select name="courseNumber" class="browser-default custom-select" style="margin-bottom: 3%;">                          
+                                <?php                       
+                                foreach ($courses as $course) {?>
+                                <option value=<?php echo $course->getCourseID();?>><?php echo $course->getCourseShortName() . " " . $course->getCourseLongName();  ?>   </option>
+                               <?php }
+                                ?>                           
+                                </select>
+                                <label style="float:left;">Enter your experience</label>  
                                 <textarea placeholder="Your Experience" name="experience"></textarea>
                                 <input type="hidden" name="action" value="ratingsButton">
-                                <button type="submit" name = "ratingsButton">Submit Ratings</button>
+                                <input type="hidden" name="instructorid" value=<?php echo $instructor->getInstructorID();?>>
+                                <input type="hidden" name="firstname" value=<?php echo $instructor->getFirstName();?>>
+                                <input type="hidden" name="lastname" value=<?php echo $instructor->getLastName();?>>
+                                <button type="submit" name="ratingsButton">Submit Ratings</button>
                             </div>
                         </div>
                     </form>
@@ -528,7 +537,174 @@ public static function createCourseForm() {?>
         <?php }
 
 
+        //Admin CRUD Operations
+        public static function listInstructors(array $instructors) { ?>
+            <h3>List of available Instructors<button class="login100-form-btn" onclick="myFunction2()" style="float:right">Add More</button></h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>InstructorID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>email</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                    </thead>
+            
+                    <?php
+            
+                    //List all the Instructors
+                    foreach ($instructors as $instructor) {
+                        echo "<tr>";
+                        echo "<td>".$instructor->getInstructorID()."</td>";
+                        echo "<td>".$instructor->getFirstName()."</td>";
+                        echo "<td>".$instructor->getLastName()."</td>";
+                        echo "<td>".$instructor->getEmail()."</td>";
+                        echo '<td><a href="?action=editinstructor&id='.$instructor->getInstructorID().'">Edit</td>';
+                        echo '<td><a href="?action=deleteinstructor&id='.$instructor->getInstructorID().'">Delete</td>';
+                        echo "</tr>";
+                    } ?>
+                    </table>
+                            <script>
+                            function myFunction2() {
+                    var x = document.getElementById("createinstructor");
+                        x.style.display = "block";
+                    
+                    }
+                    </script>
+                
+            <?php }
+        ////////////////////////////////////////////////////////////////////
+        ///create Instructor
+        /////////////////////////////////////////////////////////////////
+        public static function createInstructorForm(array $courses) {?>
+            <hr>
+            
+            <form id="createinstructor" ACTION="" METHOD="POST" style="display:none">
+            <h3>Create Instructor</h3>
+                <table>
+                  <tr>
+                       <td>First Name</td>
+                       <td><input type="text" name="instructorfirstname"></td>
+                  </tr>
+                  <tr>
+                       <td>Last Name</td>
+                       <td><input type = "text" name = "instructorlastname"></td>
+                  </tr>
+                  <tr>
+                       <td>Course</td>               
+                           <td> <select name="courseid">
+                            <?php
+                                foreach ($courses as $course) {
+                                    //Go through the courses, print out the option tag,
+                                    //where relevant and the courseID matches the section->courseID then use the SELECTED attribute.
+                                    
+                                    echo '<option value="'.$course->getCourseID().'" >'.$course->getCourseShortName().' </option>';
         
+                                    
+                                }?>
+                                   
+                            </select>
+                            </td>
+                        </tr>
+                  <tr>
+                       <td>Email</td>
+                       <td><input type = "email" name = "instructoremail"></td>
+                  </tr>
+                </table>
+                <input type="hidden" name="action" value="createinstructor">
+                
+                <input type="submit" value="create">
+            </form>
+        
+        <?php
+                            }
+        
+        //edit Instructor
+        
+        public static function editInstructorForm(Instructor $instructorToEdit,array $courses) { ?>
+            <hr>
+            <h3>Edit Instructor - <?php echo $instructorToEdit->getInstructorID(); ?></h3>
+            <form ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
+                <table>
+                    <tr>
+                        <td>Instructor ID</td>
+                        <td>
+                            <?php echo $instructorToEdit->getCourseID() ;?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instructor First Name</td>
+                    <td><input type="text" name="instructorfirstname" value="<?php echo $instructorToEdit->getFirstName(); ?>"></td>
+               </tr>
+               <tr>
+                    <td>Instructor Last Name</td>
+                    <td><input type = "text" name = "instructorlastname" value="<?php echo $instructorToEdit->getLastName(); ?>"></td>
+               </tr>
+               <td>Course</td>               
+                           <td> <select name="courseid">
+                            <?php
+                                foreach ($courses as $course) {
+                                    //Go through the courses, print out the option tag,
+                                    //where relevant and the courseID matches the section->courseID then use the SELECTED attribute.
+                                    
+                                    echo '<option value="'.$course->getCourseID().'" >'.$course->getCourseShortName().' </option>';
+        
+                                    
+                                }?>
+                                   
+                            </select>
+                            </td>
+                        </tr>
+               <tr>
+                    <td>Instructor Email</td>
+                    <td><input type = "text" name = "instructoremail" value="<?php echo $instructorToEdit->getEmail(); ?>"></td>
+               </tr>
+                </table>
+                <input type="hidden" name="action" value="editinstructor">
+                <input type="hidden" name="instructorid" value="<?php  echo $instructorToEdit->getInstructorID(); ?>">
+                <input type="submit" value="edit">
+                
+                
+            </form>
+        
+        <?php
+                            }
+        ////////////////////////////////////////////////////////////////////
+        ///List of available Students/users
+        /////////////////////////////////////////////////////////////////
+        public static function listStudents(array $students) { ?>
+            <h3>List of registered users</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>StudentID</th>
+                            <th>Student First Name</th>
+                            <th>Student Last Name</th>
+                            <th>email</th>
+                            <th>Username</th>
+                            <th>Delete</th>
+                    </thead>
+            
+                    <?php
+            
+                    //List all the Instructors
+                    foreach ($students as $student) {
+                        if($student->getUsername()!="Administrator"){
+                        echo "<tr>";
+                        echo "<td>".$student->getStudentID()."</td>";
+                        echo "<td>".$student->getFirstName()."</td>";
+                        echo "<td>".$student->getLastName()."</td>";
+                        echo "<td>".$student->getEmail()."</td>";
+                        echo "<td>".$student->getUsername()."</td>";
+                        echo '<td><a href="?action=deletestudent&id='.$student->getStudentID().'">Delete</td>';
+                        echo "</tr>";
+                        }
+                    } ?>
+                    </table>
+                
+            <?php }
+
 }
 
 

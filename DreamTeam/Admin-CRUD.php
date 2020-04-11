@@ -3,6 +3,7 @@ require_once("inc/config.inc.php");
 require_once("inc/Entity/Instructor.class.php");
 require_once("inc/Entity/Rating.class.php");
 require_once("inc/Entity/Course.class.php");
+require_once("inc/Entity/Student.class.php");
 require_once("inc/Utility/PDOService.class.php");
 require_once("inc/Utility/InstructorDAO.class.php");
 require_once("inc/Utility/CourseDAO.class.php");
@@ -49,6 +50,52 @@ if (isset($_GET["action"]) && $_GET["action"] == "delete")  {
     //Call the DAO and delete the respecitve Section
     CourseDAO::deleteCourse($_GET["id"]);
 }
+
+///////////////////////////////////////////////////////
+////////////////////instructors////////////////////////
+///////////////////////////////////////////////////////
+
+if (!empty($_POST)) {
+    if ($_POST["action"] == "createinstructor")    {
+        //Assemble the Section to Insert
+         
+        $newInstructor = new Instructor();
+        //Send the section to the DAO for insertion
+        $newInstructor->setCourseID($_POST["courseid"]);
+        $newInstructor->setFirstName($_POST["instructorfirstname"]);
+        $newInstructor->setLastName($_POST["instructorlastname"]);
+        $newInstructor->setEmail($_POST["instructoremail"]);
+        
+        //Send the section to the DAO to be created
+        InstructorDAO::createInstructor($newInstructor);
+    }else if ($_POST["action"] == "editinstructor"){
+        //Assemble the Section to Insert
+         
+        $newInstructor = new Instructor();
+        //Send the section to the DAO for insertion
+        $newInstructor->setCourseID($_POST["courseid"]);
+        $newInstructor->setFirstName($_POST["instructorfirstname"]);
+        $newInstructor->setLastName($_POST["instructorlastname"]);
+        $newInstructor->setEmail($_POST["instructoremail"]);
+        $newInstructor->setInstructorID($_POST["instructorid"]);
+        
+        //Send the section to the DAO to be created
+        InstructorDAO::updateInstructor($newInstructor);
+
+    }
+}
+if (isset($_GET["action"]) && $_GET["action"] == "deleteinstructor")  {
+    //Call the DAO and delete the respecitve Section
+    InstructorDAO::deleteInstructor($_GET["id"]);
+}
+if (isset($_GET["action"]) && $_GET["action"] == "deletestudent")  {
+    //Call the DAO and delete the respecitve Section
+    StudentDAO::deleteStudent($_GET["id"]);
+}
+
+//show
+Page::header();
+Page::listCourses(CourseDAO::getCourses());
 //If someone clicked Edit
 if (isset($_GET["action"]) && $_GET["action"] == "edit")  {
     //Pull the section to Edit from the DAO
@@ -57,10 +104,19 @@ if (isset($_GET["action"]) && $_GET["action"] == "edit")  {
     //Render the  Edit Section form with the section to edit and  alist of the courses.
     Page::editCourseForm($courseToEdit);
 }
-//show
-Page::header();
-Page::listCourses(CourseDAO::getCourses());
+
 Page::createCourseForm();
+Page::listInstructors(InstructorDAO::getInstructors());
+if (isset($_GET["action"]) && $_GET["action"] == "editinstructor")  {
+    //Pull the section to Edit from the DAO
+    $instructorToEdit = InstructorDAO::getInstructor($_GET["id"]);
+    
+    //Render the  Edit Section form with the section to edit and  alist of the courses.
+    Page::editInstructorForm($instructorToEdit,CourseDAO::getCourses());
+}   
+Page::createInstructorForm(CourseDAO::getCourses());
+
+Page::listStudents(StudentDAO::getUsers());
 Page::footer();
 
 
