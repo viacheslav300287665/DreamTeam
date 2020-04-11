@@ -100,12 +100,14 @@ VALUES ('1','Rahim','Virani','rahimvirani@douglascollege.ca'),
 INSERT INTO Instructor_Course (InstructorID,CourseID)
 VALUES ('1','3'),
  ('2','3'),
- ('1','2');
+ ('1','2'),
+ ('3','1'),
+ ('4','2');
 
 INSERT INTO Rating(InstructorID,CourseID,StudentID,Date,Rating,Review)
 VALUES ('1','2','1','1984-02-14','5','awesome'),
 ('2','3','2','1999-02-14','3','fair'),
-('3','1','2','2000-02-14','1','poor'),
+('3','1','1','2000-02-14','1','poor'),
 ('4','2','2','2000-09-14','2','poor');
 
 INSERT INTO Student(FirstName,LastName,Email,Username,Password)
