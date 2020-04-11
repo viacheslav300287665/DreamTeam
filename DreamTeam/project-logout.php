@@ -9,7 +9,8 @@ require_once("inc/Utility/Page.class.php");
 
 //Start the sesion... one last time!
 session_start();
-
+$a = $_SESSION['user'];
+$check = $a->getUsername();
 unset($_SESSION['user']);
 
 //Destroy the sesison
