@@ -381,9 +381,10 @@ public static function createCourseForm() {?>
                                 <br>
                                     <div class="location-search">
                                         <h5>Professor's Name</h5>
-                                        <input class="search" type="text" name="search" size="50" placeholder="Firstname LastName">
+                                        <input class="search" type="text" name="search" size="50" placeholder="Firstname LastName" required>
                                     </div>
-                                    <button type="submit">Search New</button>
+                                    <input type="hidden" name="action" value="searchButton">
+                                    <button type="submit" name="searchButton">Search New</button>
                                 </form>
                             </div>
                         </div>
@@ -463,7 +464,7 @@ public static function createCourseForm() {?>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST" class="contact-form">
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="number" placeholder="Your Rating (0/5)">
+                                <input type="number" name="ratingNumber" placeholder="Your Rating (0/5)">
                             </div>
 							&nbsp;
 							<div class="rating-pic">
@@ -474,9 +475,10 @@ public static function createCourseForm() {?>
                                         <i class="fa fa-star"></i>
                             </div>
                             <div class="col-lg-12 text-center">
-                                <input type="text" placeholder="Course Number">
-                                <textarea placeholder="Your Experience"></textarea>
-                                <button type="submit">Submit Ratings</button>
+                                <input type="text" name="courseNumber" placeholder="Course Number">
+                                <textarea placeholder="Your Experience" name="experience"></textarea>
+                                <input type="hidden" name="action" value="ratingsButton">
+                                <button type="submit" name = "ratingsButton">Submit Ratings</button>
                             </div>
                         </div>
                     </form>
