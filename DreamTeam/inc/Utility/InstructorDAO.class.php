@@ -1,7 +1,4 @@
 <?php
-
-
-
 class InstructorDAO  {
 
     //Hold the $_db in a variable.

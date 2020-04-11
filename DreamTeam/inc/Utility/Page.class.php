@@ -429,7 +429,7 @@ public static function createCourseForm() {?>
                             <a class="arrange-items">
                                 <div class="arrange-pic">
                                     <img src="inc/Utility/css-professor/img/bg.png" alt="">
-                                    <div class="rating"><?php echo $review->getRating();?></div>
+                                    <div class="rating"><?php echo number_format((float)$review->getRating(), 1, '.', '');?></div>
                                     <div class="tic-text"><?php echo $review->FirstName . " " . $review->LastName ;?></div>
                                 </div>
                                 <div class="arrange-text">

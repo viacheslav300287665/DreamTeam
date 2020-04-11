@@ -30,6 +30,8 @@ require_once("inc/Utility/Page.class.php");
 // Page::listProffesorReviews($instructor , $reviews, $courses);
 // Page::footer();
 //LoginManager::verifyLogin();
+session_start();
+LoginManager::verifyLogin();
 
 Page::headerForProfessor();
 Page::searchFormProfessor();
