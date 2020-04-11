@@ -442,8 +442,7 @@ public static function createCourseForm() {?>
                                         $fullname = $getSessionData->getFirstName()." ".$getSessionData->getLastName();
                                         if($fullname==$review->FirstName . " " . $review->LastName){
                                         echo '
-                                            <input type="hidden" name="action" value="editButton">
-                                            <a href="?action=editButton&id='.$review->getRatingID().'" style="background-color: #FFAE33;
+                                            <a href="?action=editButton&id='.$review->getRatingID().'&firstname='.$instructor->getFirstName().'&lastname='.$instructor->getLastName().'" style="background-color: #FFAE33;
                                             border: none;
                                             color: white;
                                             padding: 8px 16px;
@@ -453,7 +452,6 @@ public static function createCourseForm() {?>
                                             ';
 
                                         echo '<label for="space">&nbsp</label>
-                                            <input type="hidden" name="action" value="deleteButton"> 
                                             <a href="?action=deleteButton&id='.$review->getRatingID().'&firstname='.$instructor->getFirstName().'&lastname='.$instructor->getLastName().'" style="background-color: #FFAE33;
                                             border: none;
                                             color: white;
@@ -526,6 +524,57 @@ public static function createCourseForm() {?>
                                 <input type="hidden" name="firstname" value=<?php echo $instructor->getFirstName();?>>
                                 <input type="hidden" name="lastname" value=<?php echo $instructor->getLastName();?>>
                                 <button type="submit" name="ratingsButton">Submit Ratings</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php }
+
+    static function editRatingsForm($courses, Instructor $instructor, $rating) { ?>
+
+        <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST" class="contact-form">
+                        <div class="row">
+                            
+                            <div class="col-lg-12 text-center">
+                                <label style="float:left;">Select Grade</label>
+                                <select name="ratingNumber" class="browser-default custom-select" style="margin-bottom: 3%;">
+                                <option value="1" <?php if($rating->getRating()==1)echo "selected"?> >1</option>
+                                <option value="2" <?php if($rating->getRating()==2)echo "selected"?> >2</option>
+                                <option value="3" <?php if($rating->getRating()==3)echo "selected"?> >3</option>
+                                <option value="4" <?php if($rating->getRating()==4)echo "selected"?> >4</option>
+                                <option value="5" <?php if($rating->getRating()==5)echo "selected"?> >5</option>
+                                </select>  
+                                <label style="float:left;">Select Course</label>                
+                                <select name="courseNumber" class="browser-default custom-select" style="margin-bottom: 3%;">                          
+                                <?php                       
+                                foreach ($courses as $course) {
+                                        if($course->getCourseID() == $instructor->getCourseID()){?>
+                                    <option value=<?php echo $course->getCourseID();?> selected><?php echo $course->getCourseShortName() . " " . $course->getCourseLongName();  ?>   </option>      
+                                        <?php }
+                                        else{ ?>
+                                            <option value=<?php echo $course->getCourseID();?> ><?php echo $course->getCourseShortName() . " " . $course->getCourseLongName();  ?>   </option>      
+                                <?php
+                                          }
+                                }
+                                ?>                           
+                                </select>
+                                <label style="float:left;">Enter your experience</label>  
+                                <textarea placeholder="Your Experience" name="experience"><?php echo $rating->getReview();?></textarea>
+                                <input type="hidden" name="action" value="ratingsEditButton">
+                                <input type="hidden" name="instructorid" value=<?php echo $instructor->getInstructorID();?>>
+                                <input type="hidden" name="firstname" value=<?php echo $instructor->getFirstName();?>>
+                                <input type="hidden" name="ratingID" value=<?php echo $rating->getRatingID();?>>
+                                <input type="hidden" name="lastname" value=<?php echo $instructor->getLastName();?>>
+                                <button type="submit" name="ratingsEditButton">Edit Ratings</button>
                             </div>
                         </div>
                     </form>
