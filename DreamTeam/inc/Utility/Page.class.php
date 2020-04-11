@@ -410,7 +410,7 @@ public static function createCourseForm() {?>
                                     <label><?php echo $avgForInstructor ?></label>
                                     <div class="rating-pic">
                                         <?php 
-                                        for ($i = 0; $i < intval($avgForInstructor); $i++) {?>
+                                        for ($i = 0; $i < round($avgForInstructor); $i++) {?>
                                             <i class="fa fa-star"></i>
                                        <?php }                          
                                         ?>
