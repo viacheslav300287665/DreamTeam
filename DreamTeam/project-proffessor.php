@@ -20,6 +20,7 @@ Page::headerForProfessor();
 Page::searchFormProfessor();
 $student = $_SESSION["user"];
 if (!empty($_POST)){
+
     //if (isset($_POST["search"])){
     if (isset($_POST["action"]) && $_POST["action"] == "searchButton")    {
         $fullName = $_POST["search"];
@@ -81,6 +82,25 @@ if (!empty($_POST)){
         Page::reviewsSection($reviews, $averageForInstructor, $instructor);
         Page::ratingsForm($courses, $instructor);
     }
+
+}
+
+if (isset($_GET["action"]) && $_GET["action"] == "deleteButton"){     
+    RatingDAO::initialize();
+    RatingDAO::deleteRating($_GET["id"]);
+    $totalRating = 0;
+    InstructorDAO::initialize();
+    $instructor = InstructorDAO::getInstructorByName($_GET["firstname"], $_GET["lastname"]);
+    $reviews = RatingDAO::getInstructorReviews($instructor); 
+     foreach ($reviews as $review){         
+    $totalRating += $review->getRating(); 
+    }
+    $averageForInstructor = $totalRating / sizeof($reviews);
+    CourseDAO::initialize();
+    $courses = CourseDAO::getInstructorCourse($instructor);
+    Page::reviewsSection($reviews, $averageForInstructor, $instructor);
+    Page::ratingsForm($courses, $instructor);
+
 }
 
 Page::footerforProfessor();

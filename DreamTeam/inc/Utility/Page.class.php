@@ -437,6 +437,44 @@ public static function createCourseForm() {?>
                                     <h5><?php echo $review->CourseShortName; ?></h5>
                                     <span><?php echo $review->getDate() ?></span>
                                     <p><?php echo $review->getReview(); ?></p>
+                                    <?php
+                                        $getSessionData = $_SESSION['user'];
+                                        $fullname = $getSessionData->getFirstName()." ".$getSessionData->getLastName();
+                                        if($fullname==$review->FirstName . " " . $review->LastName){
+                                        echo '
+                                            <input type="hidden" name="action" value="editButton">
+                                            <a href="?action=editButton&id='.$review->getRatingID().'" style="background-color: #FFAE33;
+                                            border: none;
+                                            color: white;
+                                            padding: 8px 16px;
+                                            text-decoration: none;
+                                            margin: 2px 0px;
+                                            cursor: pointer;">Edit</a>                              
+                                            ';
+
+                                        echo '<label for="space">&nbsp</label>
+                                            <input type="hidden" name="action" value="deleteButton"> 
+                                            <a href="?action=deleteButton&id='.$review->getRatingID().'&firstname='.$instructor->getFirstName().'&lastname='.$instructor->getLastName().'" style="background-color: #FFAE33;
+                                            border: none;
+                                            color: white;
+                                            padding: 8px 16px;
+                                            text-decoration: none;
+                                            margin: 2px 0px;
+                                            cursor: pointer;">Delete</a>
+                                                                            
+                                            ';
+
+                                            /*<input type="submit" value="Edit" id="'.$review->getRatingID().'" name="editButton" style="background-color: #FFAE33;
+                                            border: none;
+                                            color: white;
+                                            padding: 8px 16px;
+                                            text-decoration: none;
+                                            margin: 2px 0px;
+                                            cursor: pointer;"> 
+
+                                            */
+                                        }
+                                    ?>
                                 </div>
                             </a>
                         </div>
