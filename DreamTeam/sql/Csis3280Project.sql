@@ -108,7 +108,8 @@ INSERT INTO Rating(InstructorID,CourseID,StudentID,Date,Rating,Review)
 VALUES ('1','2','1','1984-02-14','5','awesome'),
 ('2','3','2','1999-02-14','3','fair'),
 ('3','1','1','2000-02-14','1','poor'),
-('4','2','2','2000-09-14','2','poor');
+('4','2','2','2000-09-14','2','poor'),
+('1', '3', '2', '2005-07-16', '4', 'Very Good');
 
 INSERT INTO Student(FirstName,LastName,Email,Username,Password)
 VALUES ('sam','hill','samhill@douglascollege.ca','sam_hill','sam_hill'),

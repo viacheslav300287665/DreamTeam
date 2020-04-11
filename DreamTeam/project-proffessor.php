@@ -48,16 +48,16 @@ if (!empty($_POST)){
         if ($instructor != null){
             RatingDAO::initialize();
             $reviews = RatingDAO::getInstructorReviews($instructor);
+            var_dump($reviews);
             CourseDAO::initialize();
-            $courses = CourseDAO::getInstructorCourse($instructor);
-            Page::reviewsSection($reviews, $courses);
+            //$courses = CourseDAO::getInstructorCourse($instructor);
+            //var_dump($courses);
+            Page::reviewsSection($reviews);
             Page::ratingsForm();
         } else {
             //Show Error that $instructor is not found
         }
     }
-    
-
 }
 
 //Follow this pattern to make it work right

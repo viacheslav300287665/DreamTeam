@@ -395,7 +395,7 @@ public static function createCourseForm() {?>
             <br></br>
     <?php }
 
-    static function reviewsSection(array $reviews, $c) { ?>
+    static function reviewsSection(array $reviews) { ?>
         <!-- Filter Section Begin -->
     <section class="filter-section spad">
         <div class="container">
@@ -467,24 +467,26 @@ public static function createCourseForm() {?>
                 <div class="col-lg-9">
                     <div class="row">
                         <?php
+            
                         foreach ($reviews as $review) {?>
                         <div class="col-lg-4 col-sm-6">
                             <a class="arrange-items">
                                 <div class="arrange-pic">
                                     <img src="inc/Utility/css-professor/img/bg.png" alt="">
                                     <div class="rating"><?php echo $review->getRating();?></div>
-                                    <div class="tic-text">Student's Name</div>
+                                    <div class="tic-text"><?php echo $review->FirstName . " " . $review->LastName ;?></div>
                                 </div>
                                 <div class="arrange-text">
-                                    <h5>Course Number</h5>
-                                    <span>Date</span>
+                                    <h5><?php echo $review->CourseShortName; ?></h5>
+                                    <span><?php echo $review->getDate() ?></span>
                                     <p><?php echo $review->getReview(); ?></p>
                                 </div>
                             </a>
                         </div>
+                            
 
-
-                        <?php }                    
+                        <?php 
+                    }                    
                         ?>
                         </div>
                     </div>
