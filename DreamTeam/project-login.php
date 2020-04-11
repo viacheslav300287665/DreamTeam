@@ -35,7 +35,7 @@ if (!empty($_POST)) {
             $_SESSION['user'] = $currentUser;
 
             //Send the user to the user managment page Lab09SHi_56789-updateaccount.php
-            header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/project-updateaccount.php');
+            header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/project-proffessor.php');
         }
 }
 
