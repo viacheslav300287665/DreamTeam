@@ -53,11 +53,19 @@ DROP TABLE IF EXISTS Rating;
 CREATE TABLE Rating(
     RatingID INT PRIMARY KEY AUTO_INCREMENT,
     InstructorID INT NOT NULL,
+    CourseID INT NOT NULL,
+    StudentID INT NOT NULL,
+    Date Date,
     Rating INT NOT NULL,
     Review VARCHAR(255),
 
     CONSTRAINT FOREIGN KEY (InstructorID) REFERENCES Instructor(InstructorID) ON UPDATE CASCADE
+    ON DELETE CASCADE,
+    CONSTRAINT FOREIGN KEY (CourseID) REFERENCES Course(CourseID) ON UPDATE CASCADE
+    ON DELETE CASCADE,
+    CONSTRAINT FOREIGN KEY (StudentID) REFERENCES Student(StudentID) ON UPDATE CASCADE
     ON DELETE CASCADE
+
 
    
 );
@@ -85,16 +93,23 @@ VALUES ('CSIS 3280 ','Web Scripting'),
 
 INSERT INTO Instructor(CourseID,FirstName,LastName,Email)
 VALUES ('1','Rahim','Virani','rahimvirani@douglascollege.ca'),
-('3','Michael','Hrybyk','michealhrybyk@douglascollege.ca');
+('3','Michael','Hrybyk','michealhrybyk@douglascollege.ca'),
+('2','Bambang ','Sarif','bambangsarif@douglascollege.ca'),
+('3','Reza','Ghaeli','rezaghaeli@douglascollege.ca');
 
 INSERT INTO Instructor_Course (InstructorID,CourseID)
 VALUES ('1','3'),
  ('2','3'),
- ('1','2');
+ ('1','2'),
+ ('3','1'),
+ ('4','2');
 
-INSERT INTO Rating(InstructorID,Rating,Review)
-VALUES ('1','5','awesome'),
-('2','5','great');
+INSERT INTO Rating(InstructorID,CourseID,StudentID,Date,Rating,Review)
+VALUES ('1','2','1','1984-02-14','5','awesome'),
+('2','3','2','1999-02-14','3','fair'),
+('3','1','1','2000-02-14','1','poor'),
+('4','2','2','2000-09-14','2','poor'),
+('1', '3', '2', '2005-07-16', '4', 'Very Good');
 
 INSERT INTO Student(FirstName,LastName,Email,Username,Password)
 VALUES ('sam','hill','samhill@douglascollege.ca','sam_hill','sam_hill'),

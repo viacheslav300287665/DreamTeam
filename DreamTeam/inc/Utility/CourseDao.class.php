@@ -34,6 +34,7 @@ class CourseDAO  {
         self::$_db->execute();
         return self::$_db->resultSet();
     }
+    
     static function createCourse(Course $newCourse) {
 
         //Create means INSERT

@@ -56,7 +56,10 @@ class RatingDAO  {
         return self::$_db->resultSet();
     }
     static function getInstructorReviews(Instructor $instructor){
-        $sql = "SELECT Rating.RatingID, Rating.InstructorID, Rating.Rating, Rating.Review FROM Instructor, Rating where Rating.InstructorID=:instructorid = Instructor.InstructorID=:instructorid ORDER BY RatingID;";
+        $sql = "SELECT Course.CourseShortName, Student.FirstName, Student.LastName, Rating.RatingID, Rating.Date, Rating.CourseID, Rating.StudentID, Rating.InstructorID, Rating.Rating, Rating.Review 
+        FROM Instructor, Rating, Student, Course 
+        where Rating.InstructorID=:instructorid = Instructor.InstructorID and Rating.CourseID = Course.CourseID and Rating.StudentID = Student.StudentID
+         ORDER BY Rating.Date;";
         self::$_db->query($sql);
         self::$_db->bind(":instructorid", $instructor->getInstructorID());
         self::$_db->execute();

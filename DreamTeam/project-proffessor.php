@@ -31,12 +31,39 @@ require_once("inc/Utility/Page.class.php");
 // Page::footer();
 //LoginManager::verifyLogin();
 
-
-//Follow this pattern to make it work right
 Page::headerForProfessor();
 Page::searchFormProfessor();
-Page::reviewsSection();
-Page::ratingsForm();
+
+if (!empty($_POST)){
+    if (isset($_POST["search"])){
+        $fullName = $_POST["search"];
+        $splitFullName = explode(" ", $fullName);
+        $firstName = $splitFullName[0];
+        $lastName = $splitFullName[1];
+        var_dump($firstName);
+        var_dump($lastName);
+        InstructorDAO::initialize();
+        $instructor = InstructorDAO::getInstructorByName($firstName, $lastName);
+        var_dump($instructor);
+        if ($instructor != null){
+            RatingDAO::initialize();
+            $reviews = RatingDAO::getInstructorReviews($instructor);
+            var_dump($reviews);
+            CourseDAO::initialize();
+            //$courses = CourseDAO::getInstructorCourse($instructor);
+            //var_dump($courses);
+            Page::reviewsSection($reviews);
+            Page::ratingsForm();
+        } else {
+            //Show Error that $instructor is not found
+        }
+    }
+}
+
+//Follow this pattern to make it work right
+
+//Page::reviewsSection();
+
 Page::footerforProfessor();
 
 
