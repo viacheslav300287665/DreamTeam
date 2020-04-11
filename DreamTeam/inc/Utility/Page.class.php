@@ -395,7 +395,7 @@ public static function createCourseForm() {?>
             <br></br>
     <?php }
 
-    static function reviewsSection(array $reviews) { ?>
+    static function reviewsSection(array $reviews, float $avgForInstructor, Instructor $instructor) { ?>
         <!-- Filter Section Begin -->
     <section class="filter-section spad">
         <div class="container">
@@ -403,63 +403,19 @@ public static function createCourseForm() {?>
                 <div class="col-lg-3">
                     <div class="filter-left">
                         <div class="rating-filter">
-                            <h3>Ratings</h3>
-                            <div class="rating-option">
-                                <div class="ro-item">
-                                    <input type="radio">
-                                    <label class="active">5.0</label>
+                            <h3>Ratings for <?php  echo $instructor->getFirstName() . " " . $instructor->getLastName();  ?></h3>
+                            <h5>Overall Quality <?php echo $avgForInstructor; ?> / 5 Based on <?php echo sizeof($reviews) ?> rating(s)</h5><br>
+                            <div class="rating-option">   
+                            <div class="ro-item">                                                                                               
+                                    <label><?php echo $avgForInstructor ?></label>
                                     <div class="rating-pic">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="ro-item">
-                                    <input type="radio">
-                                    <label>4.0</label>
-                                    <div class="rating-pic">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                    </div>
-                                </div>
-                                <div class="ro-item">
-                                    <input type="radio">
-                                    <label>3.0</label>
-                                    <div class="rating-pic">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                    </div>
-                                </div>
-                                <div class="ro-item">
-                                    <input type="radio">
-                                    <label>2.0</label>
-                                    <div class="rating-pic">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                    </div>
-                                </div>
-                                <div class="ro-item">
-                                    <input type="radio">
-                                    <label>1.0</label>
-                                    <div class="rating-pic">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                        <i class="fa fa-star grey-bg"></i>
-                                    </div>
-                                </div>
+                                        <?php 
+                                        for ($i = 0; $i < round($avgForInstructor); $i++) {?>
+                                            <i class="fa fa-star"></i>
+                                       <?php }                          
+                                        ?>
+                                    </div>                         
+                                    </div>                     
                             </div>
                         </div>
                     </div>

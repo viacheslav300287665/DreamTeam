@@ -40,19 +40,20 @@ if (!empty($_POST)){
         $splitFullName = explode(" ", $fullName);
         $firstName = $splitFullName[0];
         $lastName = $splitFullName[1];
-        var_dump($firstName);
-        var_dump($lastName);
+        $totalRating = 0;
         InstructorDAO::initialize();
         $instructor = InstructorDAO::getInstructorByName($firstName, $lastName);
-        var_dump($instructor);
         if ($instructor != null){
             RatingDAO::initialize();
-            $reviews = RatingDAO::getInstructorReviews($instructor);
-            var_dump($reviews);
+            $reviews = RatingDAO::getInstructorReviews($instructor); 
+            foreach ($reviews as $review){         
+               $totalRating += $review->getRating(); 
+            }
+            $averageForInstructor = $totalRating / sizeof($reviews);
             CourseDAO::initialize();
             //$courses = CourseDAO::getInstructorCourse($instructor);
             //var_dump($courses);
-            Page::reviewsSection($reviews);
+            Page::reviewsSection($reviews, $averageForInstructor, $instructor);
             Page::ratingsForm();
         } else {
             //Show Error that $instructor is not found
