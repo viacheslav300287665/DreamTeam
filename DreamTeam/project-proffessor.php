@@ -82,9 +82,36 @@ if (!empty($_POST)){
         Page::reviewsSection($reviews, $averageForInstructor, $instructor);
         Page::ratingsForm($courses, $instructor);
     }
+    else if (isset($_POST["action"]) && $_POST["action"] == "ratingsEditButton"){
+        $rating = new Rating();
+        $rating->setRatingID($_POST["ratingID"]);
+        $rating->setInstructorID($_POST["instructorid"]);
+        $rating->setCourseID($_POST["courseNumber"]);
+        $rating->setStudentID($student->getStudentID());
+        $date = date('Y/m/d');
+        $rating->setDate($date);
+        //var_dump($_POST["ratingNumber"]);
+        $rating->setRating($_POST["ratingNumber"]);
+        $rating->setReview($_POST["experience"]);      
+        RatingDAO::initialize();
+        RatingDAO::updateRating($rating);
+        $totalRating = 0;
+        InstructorDAO::initialize();
+        $instructor = InstructorDAO::getInstructorByName($_POST["firstname"], $_POST["lastname"]);
+        $reviews = RatingDAO::getInstructorReviews($instructor); 
+         foreach ($reviews as $review){         
+        $totalRating += $review->getRating(); 
+        }
+        $averageForInstructor = $totalRating / sizeof($reviews);
+        CourseDAO::initialize();
+        $courses = CourseDAO::getInstructorCourse($instructor);
+        Page::reviewsSection($reviews, $averageForInstructor, $instructor);
+        Page::ratingsForm($courses, $instructor);
+    
+    }
 
 }
-
+//when the delete button is clicked in panel
 if (isset($_GET["action"]) && $_GET["action"] == "deleteButton"){     
     RatingDAO::initialize();
     RatingDAO::deleteRating($_GET["id"]);
@@ -103,6 +130,24 @@ if (isset($_GET["action"]) && $_GET["action"] == "deleteButton"){
 
 }
 
+//when the edit button is clicked in panel
+if (isset($_GET["action"]) && $_GET["action"] == "editButton"){           
+        RatingDAO::initialize();
+        $rating = RatingDAO::getRating($_GET["id"]);
+        $totalRating = 0;
+        InstructorDAO::initialize();
+        $instructor = InstructorDAO::getInstructorByName($_GET["firstname"], $_GET["lastname"]);
+        $reviews = RatingDAO::getInstructorReviews($instructor); 
+         foreach ($reviews as $review){         
+        $totalRating += $review->getRating(); 
+        }
+        $averageForInstructor = $totalRating / sizeof($reviews);
+        CourseDAO::initialize();
+        $courses = CourseDAO::getInstructorCourse($instructor);
+        Page::reviewsSection($reviews, $averageForInstructor, $instructor);
+        Page::editRatingsForm($courses, $instructor, $rating);
+
+}
 Page::footerforProfessor();
 
 
