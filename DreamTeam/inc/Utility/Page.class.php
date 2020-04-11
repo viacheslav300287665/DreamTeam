@@ -405,7 +405,7 @@ public static function createCourseForm() {?>
                     <div class="filter-left">
                         <div class="rating-filter">
                             <h3>Ratings for <?php  echo $instructor->getFirstName() . " " . $instructor->getLastName();  ?></h3>
-                            <h5>Overall Quality <?php echo sprintf("%.2f",$avgForInstructor); ?> / 5 Based on <?php echo sizeof($reviews) ?> rating(s)</h5><br>
+                            <h5>Overall Quality <?php echo "<strong>" . sprintf("%.2f",$avgForInstructor) . "</strong>"; ?> / 5 Based on <?php echo sizeof($reviews) ?> rating(s)</h5><br>
                             <div class="rating-option">   
                             <div class="ro-item">                                                                                               
                                     <label><?php echo sprintf("%.2f",$avgForInstructor); ?></label>
