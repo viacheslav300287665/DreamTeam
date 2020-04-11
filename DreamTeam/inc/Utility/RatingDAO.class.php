@@ -15,16 +15,17 @@ class RatingDAO  {
     static function createRating(Rating $newRating) {
 
         //Create means INSERT
-        $sql="INSERT INTO Rating (InstructorID,Rating,Review)
-        VALUES (:instructorid,:rating,:review);";
-
+        $sql="INSERT INTO Rating (InstructorID, CourseID, StudentID, Date, Rating, Review)
+        VALUES (:instructorid,:courseid,:studentid,:date,:rating,:review);";
         //QUERY BIND EXECUTE RETURN
         self::$_db->query($sql);
         self::$_db->bind(":instructorid",$newRating->getInstructorID());
+        self::$_db->bind(":courseid",$newRating->getCourseID());
+        self::$_db->bind(":studentid",$newRating->getStudentID());
+        self::$_db->bind(":date",$newRating->getDate());
         self::$_db->bind(":rating",$newRating->getRating());
         self::$_db->bind(":review",$newRating->getReview());
-        self::$_db->execute();
-        
+        self::$_db->execute();    
         return self::$_db->lastInsertedId();
       
 
@@ -59,7 +60,7 @@ class RatingDAO  {
         $sql = "SELECT Course.CourseShortName, Student.FirstName, Student.LastName, Rating.RatingID, Rating.Date, Rating.CourseID, Rating.StudentID, Rating.InstructorID, Rating.Rating, Rating.Review 
         FROM Instructor, Rating, Student, Course 
         where Rating.InstructorID=:instructorid = Instructor.InstructorID and Rating.CourseID = Course.CourseID and Rating.StudentID = Student.StudentID
-         ORDER BY Rating.Date;";
+         ORDER BY Rating.Date DESC;";
         self::$_db->query($sql);
         self::$_db->bind(":instructorid", $instructor->getInstructorID());
         self::$_db->execute();

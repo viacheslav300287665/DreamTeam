@@ -34,7 +34,7 @@ public function setStudentID(int $studentID){
 public function setDate(string $date){
     $this->Date=$date;
 }
-public function setRating(int $ratingID){
+public function setRating(int $rating){
     $this->Rating=$rating;
 }
 public function setReview(string $review){

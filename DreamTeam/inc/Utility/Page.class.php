@@ -405,10 +405,10 @@ public static function createCourseForm() {?>
                     <div class="filter-left">
                         <div class="rating-filter">
                             <h3>Ratings for <?php  echo $instructor->getFirstName() . " " . $instructor->getLastName();  ?></h3>
-                            <h5>Overall Quality <?php echo $avgForInstructor; ?> / 5 Based on <?php echo sizeof($reviews) ?> rating(s)</h5><br>
+                            <h5>Overall Quality <?php echo sprintf("%.2f",$avgForInstructor); ?> / 5 Based on <?php echo sizeof($reviews) ?> rating(s)</h5><br>
                             <div class="rating-option">   
                             <div class="ro-item">                                                                                               
-                                    <label><?php echo $avgForInstructor ?></label>
+                                    <label><?php echo sprintf("%.2f",$avgForInstructor); ?></label>
                                     <div class="rating-pic">
                                         <?php 
                                         for ($i = 0; $i < round($avgForInstructor); $i++) {?>
@@ -454,7 +454,7 @@ public static function createCourseForm() {?>
     <!-- Filter Section End -->
     <?php }
 
-    static function ratingsForm() { ?>
+    static function ratingsForm($courses, Instructor $instructor) { ?>
 
         <!-- Contact Section Begin -->
     <section class="contact-section spad">
@@ -463,22 +463,31 @@ public static function createCourseForm() {?>
                 <div class="col-lg-12">
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST" class="contact-form">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <input type="number" name="ratingNumber" placeholder="Your Rating (0/5)">
-                            </div>
-							&nbsp;
-							<div class="rating-pic">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                            </div>
+                            
                             <div class="col-lg-12 text-center">
-                                <input type="text" name="courseNumber" placeholder="Course Number">
+                                <label style="float:left;">Select Grade</label>
+                                <select name="ratingNumber" class="browser-default custom-select" style="margin-bottom: 3%;">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                </select>  
+                                <label style="float:left;">Select Course</label>                
+                                <select name="courseNumber" class="browser-default custom-select" style="margin-bottom: 3%;">                          
+                                <?php                       
+                                foreach ($courses as $course) {?>
+                                <option value=<?php echo $course->getCourseID();?>><?php echo $course->getCourseShortName() . " " . $course->getCourseLongName();  ?>   </option>
+                               <?php }
+                                ?>                           
+                                </select>
+                                <label style="float:left;">Enter your experience</label>  
                                 <textarea placeholder="Your Experience" name="experience"></textarea>
                                 <input type="hidden" name="action" value="ratingsButton">
-                                <button type="submit" name = "ratingsButton">Submit Ratings</button>
+                                <input type="hidden" name="instructorid" value=<?php echo $instructor->getInstructorID();?>>
+                                <input type="hidden" name="firstname" value=<?php echo $instructor->getFirstName();?>>
+                                <input type="hidden" name="lastname" value=<?php echo $instructor->getLastName();?>>
+                                <button type="submit" name="ratingsButton">Submit Ratings</button>
                             </div>
                         </div>
                     </form>
