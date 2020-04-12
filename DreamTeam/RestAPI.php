@@ -101,19 +101,19 @@ switch ($_SERVER["REQUEST_METHOD"])   {
     break;
    
     case "PUT":
-    
-        //In YARC send the following: Id=6&Name=Sally Hill&City=Vancouver&Address=66 Royal Ave
-        //Must be an update, build the new customer object
-        $ec = new Customer();
-        $ec->setCustomerID($requestData->CustomerID);
-        $ec->setName($requestData->Name);
-        $ec->setCity($requestData->City);
-        $ec->setAddress($requestData->Address);
-
-        $result = CustomerMapper::updateCustomer($ec);
-        //Set the header
+        RatingDAO::initialize();
+        //Update Rating
+        $rating = new Rating();
+        $rating->setInstructorID($requestData->InstructorID);
+        $rating->setCourseID($requestData->CourseID);
+        $rating->setRating($requestData->Rating);
+        $rating->setReview($requestData->Review);
+        $rating->setStudentID($requestData->StudentID);
+        $rating->setDate($requestData->Date);
+        $rating->setRatingID($requestData->RatingID);
+        
+        $result = RatingDAO::updateRating($rating);
         header('Content-Type: application/json');
-        //Return the number of rows affected
         echo json_encode($result);
 
     break;
@@ -121,8 +121,9 @@ switch ($_SERVER["REQUEST_METHOD"])   {
     case "DELETE":
         //In YARC send the request as key=value
         //Pull the ID, send it to delete via the customer mapper and return the result.
-        $result = CustomerMapper::deleteCustomer($requestData->id);
-
+        // $result = CustomerMapper::deleteCustomer($requestData->id);
+        RatingDAO::initialize();
+        $result = RatingDAO::deleteRating($requestData->id);
         //Set the header
         header('Content-Type: application/json');
         //return the confirmation of deletion
