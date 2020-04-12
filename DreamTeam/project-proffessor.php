@@ -53,7 +53,12 @@ if (!empty($_GET)) {
                     foreach ($reviews as $review){         
                         $totalRating += $review->getRating(); 
                     }
-                    $averageForInstructor = $totalRating / sizeof($reviews);
+                    if (siseof($reviews != 0)){
+                        $averageForInstructor = $totalRating / sizeof($reviews);
+                    } else {
+                        $averageForInstructor = 0;
+                    }
+                    
                                       
                     Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                     Page::ratingsForm($courses, $instructor);           
@@ -113,7 +118,11 @@ if (!empty($_GET)) {
                 foreach ($reviews as $review){         
                     $totalRating += $review->getRating(); 
                 }
-                $averageForInstructor = $totalRating / sizeof($reviews);
+                if (siseof($reviews != 0)){
+                    $averageForInstructor = $totalRating / sizeof($reviews);
+                } else {
+                    $averageForInstructor = 0;
+                }
                                   
                 Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                 Page::ratingsForm($courses, $instructor);
@@ -169,8 +178,11 @@ if (!empty($_GET)) {
                 foreach ($reviews as $review){         
                     $totalRating += $review->getRating(); 
                 }
-                $averageForInstructor = $totalRating / sizeof($reviews);
-                                  
+                if (siseof($reviews != 0)){
+                    $averageForInstructor = $totalRating / sizeof($reviews);
+                } else {
+                    $averageForInstructor = 0;
+                }                                
                 Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                 Page::ratingsForm($courses, $instructor);
     
@@ -215,7 +227,11 @@ if (isset($_GET["action"]) && $_GET["action"] == "deleteButton"){
                 foreach ($reviews as $review){         
                     $totalRating += $review->getRating(); 
                 }
-                $averageForInstructor = $totalRating / sizeof($reviews);
+                if (siseof($reviews != 0)){
+                    $averageForInstructor = $totalRating / sizeof($reviews);
+                } else {
+                    $averageForInstructor = 0;
+                }
                                   
                 Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                 Page::ratingsForm($courses, $instructor);
@@ -270,7 +286,11 @@ if (isset($_GET["action"]) && $_GET["action"] == "editButton"){
                 foreach ($reviews as $review){         
                     $totalRating += $review->getRating(); 
                 }
-                $averageForInstructor = $totalRating / sizeof($reviews);
+                if (siseof($reviews != 0)){
+                    $averageForInstructor = $totalRating / sizeof($reviews);
+                } else {
+                    $averageForInstructor = 0;
+                }
                                   
                 Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                 Page::editRatingsForm($courses, $instructor, $ratingObject);
