@@ -59,9 +59,18 @@ class Student {
     function verifyPassword(string $passwordToVerify) {
        
         //Return a boolean based on verifying if the password given is correct for the current user
-        return password_verify($passwordToVerify,$this->getPassword());
-        
+        return password_verify($passwordToVerify,$this->getPassword());     
     }
+    public function jsonSerialize() {
+    $obj = new stdClass;
+    $obj->StudentID = $this->StudentID;
+    $obj->FirstName = $this->FirstName;
+    $obj->LastName = $this->LastName;
+    $obj->Email = $this->Email;
+    $obj->Username = $this->Username;
+    $obj->Password = $this->Password;
+    return $obj;
+}
 }
 
 ?>

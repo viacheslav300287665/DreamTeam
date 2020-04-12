@@ -48,6 +48,16 @@ class Instructor {
     public function getEmail():string{
         return $this->Email;
     } 
+    public function jsonSerialize()
+    {
+        $obj = new stdClass;
+        $obj->InstructorID = $this->InstructorID;
+        $obj->CourseID = $this->CourseID;
+        $obj->FirstName = $this->FirstName;
+        $obj->LastName = $this->LastName;
+        $obj->Email = $this->Email;
+        return $obj;
+    }
 
 
 }

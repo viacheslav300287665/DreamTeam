@@ -5,11 +5,17 @@
 require_once('inc/config.inc.php');
 
 //Require Entities
-require_once('inc/Entities/Customer.class.php');
+require_once('inc/Entity/Course.class.php');
+require_once('inc/Entity/Instructor.class.php');
+require_once('inc/Entity/Rating.class.php');
+require_once('inc/Entity/Student.class.php');
 
 //Require Utillity Classes
-require_once('inc/Utilities/PDOAgent.class.php');
-require_once('inc/Utilities/CustomerMapper.class.php');
+require_once('inc/Utility/PDOService.class.php');
+require_once('inc/Utility/CourseDAO.class.php');
+require_once('inc/Utility/InstructorDAO.class.php');
+require_once('inc/Utility/RatingDAO.class.php');
+require_once('inc/Utility/StudentDAO.class.php');
 
 /*
 Create  - INSERT - POST
@@ -19,8 +25,6 @@ DELETE  - DELETE - DELETE
 */
 
 //Instantiate a new Customer Mapper
-CustomerMapper::initialize();
-
 
 //Pull the request data
 // parse_str(file_get_contents('php://input'), $requestData);
@@ -32,15 +36,19 @@ switch ($_SERVER["REQUEST_METHOD"])   {
 
     case "POST":    //Picked up a POST, Its Insert time!
     //YARC Id=6&Name=Sally Hill&City=Vancouver&Address=66 Royal Ave
+    RatingDAO::initialize();
+    //New Rating
 
-    //New Customer
-    $nc = new Customer();
-    $nc->setName($requestData->Name);
-    $nc->setAddress($requestData->Address);
-    $nc->setCity($requestData->City);
-
-    $result = CustomerMapper::createCustomer($nc);
-    //Return the results
+    $rating = new Rating();
+    $rating->setInstructorID($requestData->InstructorID);
+    $rating->setCourseID($requestData->CourseID);
+    $rating->setRating($requestData->Rating);
+    $rating->setReview($requestData->Review);
+    $rating->setStudentID($requestData->StudentID);
+    $rating->setDate($requestData->Date);
+      
+    $result = RatingDAO::createRating($rating);
+    header('Content-Type: application/json');
     echo json_encode($result);
 
     break;
@@ -48,34 +56,48 @@ switch ($_SERVER["REQUEST_METHOD"])   {
     //If there was a request with an id return that customer, if not return all of them!
     case "GET":
 
-        if (isset($requestData->id))    {
+      //  if (isset($requestData->id))    {
 
             //Return the customer object
-            $sc = CustomerMapper::getCustomer($requestData->id);
+         //   $sc = CustomerMapper::getCustomer($requestData->id);
 
             //Set the header
-            header('Content-Type: application/json');
+       //     header('Content-Type: application/json');
             //Barf out the JSON version
-            echo json_encode($sc->jsonSerialize());
+       //     echo json_encode($sc->jsonSerialize());
 
-        } else {
-
+       // } else {
             //All the customers!
-            $customers = CustomerMapper::getCustomers();
-            
+            if (isset($requestData->search)){
+                InstructorDAO::initialize();
+                $splitFullName = explode(" ", $requestData->search);
+                $firstName = $splitFullName[0];
+                $lastName = $splitFullName[1];
+                $instructor = InstructorDAO::getInstructorByName($firstName, $lastName);
+                RatingDAO::initialize();
+                $ratings = RatingDAO::getInstructorReviews($instructor);                
+                CourseDAO::initialize();
+                $courses = CourseDAO::getInstructorCourse($instructor);
             //Walk the customers and add them to a serialized array to return.
-            $serializedCustomers = array();
-
-            foreach ($customers as $customer)    {
-                $serializedCustomers[] = $customer->jsonSerialize();
+            $serializedRatings = array();
+            $serializedCourses = array();
+            $serializedInstructor;
+            foreach ($ratings as $rating){
+                $serializedRatings[] = $rating->jsonSerialize();         
             }
+            foreach ($courses as $course)    {
+                $serializedCourses[] = $course->jsonSerialize();
+            }       
+            $serializedInstructor = $instructor->jsonSerialize();
             //Return the results
-
             //Set the header
             header('Content-Type: application/json');
             //Return the entire array
-            echo json_encode($serializedCustomers);            
-        }
+            $myJSON[] = $serializedRatings; 
+            $myJSON[] = $serializedCourses;
+            $myJSON[] = $serializedInstructor;
+            echo json_encode($myJSON);
+            }                    
     break;
    
     case "PUT":
