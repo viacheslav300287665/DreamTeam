@@ -442,7 +442,7 @@ public static function createCourseForm() {?>
                                         $fullname = $getSessionData->getFirstName()." ".$getSessionData->getLastName();
                                         if($fullname==$review->FirstName . " " . $review->LastName){
                                         echo '
-                                            <a href="?action=editButton&id='.$review->getRatingID().'&firstname='.$instructor->getFirstName().'&lastname='.$instructor->getLastName().'" style="background-color: #FFAE33;
+                                            <a href="?action=editButton&id='.$review->getRatingID().'&rating='.$review->getRating().'&review='.$review->getReview().'&firstname='.$instructor->getFirstName().'&lastname='.$instructor->getLastName().'" style="background-color: #FFAE33;
                                             border: none;
                                             color: white;
                                             padding: 8px 16px;
@@ -459,6 +459,7 @@ public static function createCourseForm() {?>
                                             text-decoration: none;
                                             margin: 2px 0px;
                                             cursor: pointer;">Delete</a>
+                                            <br></br>
                                                                             
                                             ';
 
