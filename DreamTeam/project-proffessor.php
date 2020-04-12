@@ -53,15 +53,14 @@ if (!empty($_GET)) {
                     foreach ($reviews as $review){         
                         $totalRating += $review->getRating(); 
                     }
-                    if (siseof($reviews != 0)){
-                        $averageForInstructor = $totalRating / sizeof($reviews);
-                    } else {
-                        $averageForInstructor = 0;
-                    }
-                    
-                                      
+                    $averageForInstructor = 0;       
+                    if (sizeof($reviews) != 0){
+                        $averageForInstructor = $totalRating / sizeof($reviews); 
+                    }              
                     Page::reviewsSection($reviews, $averageForInstructor, $instructor);
-                    Page::ratingsForm($courses, $instructor);           
+                    Page::ratingsForm($courses, $instructor);  
+                                      
+                             
                     }
             else {                
              Page::footerforProfessor();
@@ -118,12 +117,10 @@ if (!empty($_GET)) {
                 foreach ($reviews as $review){         
                     $totalRating += $review->getRating(); 
                 }
-                if (siseof($reviews != 0)){
-                    $averageForInstructor = $totalRating / sizeof($reviews);
-                } else {
-                    $averageForInstructor = 0;
-                }
-                                  
+                $averageForInstructor = 0;       
+                    if (sizeof($reviews) != 0){
+                        $averageForInstructor = $totalRating / sizeof($reviews); 
+                }                       
                 Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                 Page::ratingsForm($courses, $instructor);
             //Everyone call your alias as a dreamteam, otherwise you are gonna get an error!!           
@@ -178,11 +175,10 @@ if (!empty($_GET)) {
                 foreach ($reviews as $review){         
                     $totalRating += $review->getRating(); 
                 }
-                if (siseof($reviews != 0)){
-                    $averageForInstructor = $totalRating / sizeof($reviews);
-                } else {
-                    $averageForInstructor = 0;
-                }                                
+                $averageForInstructor = 0;       
+                    if (sizeof($reviews) != 0){
+                        $averageForInstructor = $totalRating / sizeof($reviews); 
+                }                                  
                 Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                 Page::ratingsForm($courses, $instructor);
     
@@ -227,11 +223,10 @@ if (isset($_GET["action"]) && $_GET["action"] == "deleteButton"){
                 foreach ($reviews as $review){         
                     $totalRating += $review->getRating(); 
                 }
-                if (siseof($reviews != 0)){
-                    $averageForInstructor = $totalRating / sizeof($reviews);
-                } else {
-                    $averageForInstructor = 0;
-                }
+                $averageForInstructor = 0;       
+                    if (sizeof($reviews) != 0){
+                        $averageForInstructor = $totalRating / sizeof($reviews); 
+                 }  
                                   
                 Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                 Page::ratingsForm($courses, $instructor);
@@ -286,11 +281,10 @@ if (isset($_GET["action"]) && $_GET["action"] == "editButton"){
                 foreach ($reviews as $review){         
                     $totalRating += $review->getRating(); 
                 }
-                if (siseof($reviews != 0)){
-                    $averageForInstructor = $totalRating / sizeof($reviews);
-                } else {
-                    $averageForInstructor = 0;
-                }
+                $averageForInstructor = 0;       
+                    if (sizeof($reviews) != 0){
+                        $averageForInstructor = $totalRating / sizeof($reviews); 
+                }  
                                   
                 Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                 Page::editRatingsForm($courses, $instructor, $ratingObject);
