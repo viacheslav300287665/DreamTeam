@@ -31,6 +31,14 @@ Class Course    {
     public function getCourseLongName():string{
         return $this->CourseLongName;
     }
+    public function jsonSerialize()
+    {
+        $obj = new stdClass;
+        $obj->CourseID = $this->CourseID;
+        $obj->CourseShortName = $this->CourseShortName;
+        $obj->CourseLongName = $this->CourseLongName;
+        return $obj;
+    }
 
 }
 

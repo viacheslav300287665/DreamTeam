@@ -377,7 +377,7 @@ public static function createCourseForm() {?>
                             <div class="hero-text">
                                 <img src="inc/Utility/css-professor/img/placeholder.png" alt="">
                                 <h1>Professor's Name</h1>
-                                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST" class="filter-search">
+                                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="GET" class="filter-search">
                                 <br>
                                     <div class="location-search">
                                         <h5>Professor's Name</h5>

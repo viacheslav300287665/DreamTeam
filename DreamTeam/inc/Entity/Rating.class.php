@@ -15,6 +15,9 @@ private $StudentID;
 private $Date;
 private $Rating;
 private $Review;
+public $FirstName = "";
+public $LastName = "";
+public $CourseShortName = "";
 
 
 
@@ -40,6 +43,15 @@ public function setRating(int $rating){
 public function setReview(string $review){
     $this->Review=$review;
 }
+public function setFirstName(string $firstname){
+    $this->FirstName = $firstname;
+}
+public function setLastName(string $lastname){
+    $this->LastName = $lastname;
+}
+public function setCourseShortName(string $courseshortname){
+    $this->CourseShortName = $courseshortname;
+}
 
 //getters
 public function getRatingID():int{
@@ -62,6 +74,21 @@ public function getRating() :int{
 }
 public function getReview():string{
      return$this->Review;
+}
+public function jsonSerialize()
+{
+    $obj = new stdClass;
+    $obj->RatingID = $this->RatingID;
+    $obj->InstructorID = $this->InstructorID;
+    $obj->CourseID = $this->CourseID;
+    $obj->StudentID = $this->StudentID;
+    $obj->Date = $this->Date;
+    $obj->Rating = $this->Rating;
+    $obj->Review = $this->Review;
+    $obj->FirstName = $this->FirstName;
+    $obj->LastName = $this->LastName;
+    $obj->CourseShortName = $this->CourseShortName;
+    return $obj;
 }
 }
 ?>

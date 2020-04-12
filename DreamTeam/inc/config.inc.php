@@ -8,7 +8,7 @@ for ($i = 0; $i < count($urlpeices) -1; $i++)   {
 }
 $api_url .= "/RestAPI.php";
 
-define('API_URL', $api_url);
+//define('API_URL', $api_url);
 
 //DO NOT MODIFY THE CODE ABOVE THIS LINE
 
@@ -17,5 +17,6 @@ define("DB_HOST", "localhost");
 define("DB_USER", "root");  
 define("DB_PASS", "");  
 define("DB_NAME", "csis3280project");  
-//define('API_URL','http://localhost:8080/week9/Lab%2010/RestAPI.php')
+
+define('API_URL','http://localhost/dreamteam/RestAPI.php')
 ?>
