@@ -999,6 +999,86 @@ public static function listCourses(array $courses) { ?>
                 </ul> 
             <?php }
 
+public static function listInstructorCourses(array $instructorCourses) { ?>
+    <h3>List of Courses each instructor is taking</h3>
+        <table align="center"class="table table-hover table-borderless w-75 p-3">
+            <thead class="thead-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Course Short Name</th>
+                    <th>Course Long Name</th>
+            </thead>
+    
+            <?php
+    
+            //List all the Instructors
+            foreach ($instructorCourses as $instructorCourse) {
+                echo "<tr>";
+                echo "<td>".$instructorCourse->FirstName."</td>";
+                echo "<td>".$instructorCourse->LastName."</td>";
+                echo "<td>".$instructorCourse->CourseShortName."</td>";
+                echo "<td>".$instructorCourse->CourseLongName."</td>";
+                echo "</tr>";
+            } ?>
+            <tr><td colspan="4"><button class="btn btn-outline-dark btn-block" onclick="myFunction3()">Assign a course</button></td></tr>
+            </table>
+                    <script>
+                    function myFunction3() {
+            var x = document.getElementById("createinstructorcourse");
+                x.style.display = "block";
+                
+            
+            }
+            </script>
+        
+    <?php }
+
+public static function createInstructorCourse(array $instructor,array $course) {?>
+    <hr>
+    
+    <form id="createinstructorcourse" ACTION="" METHOD="POST" style="display:none" >
+    <h3>Assign a course to Instructor</h3>
+        <table align="center" class="table table-borderless table-borderless w-75 p-3">
+          <tr>
+               <td>Instructor Name</td>
+               <td>
+               <select name="instructorid">
+               <?php
+                        foreach ($instructor as $i) {
+                           
+                            
+                            echo '<option value="'.$i->getInstructorID().'" >'.$i->getFirstName().' </option>';
+
+                            
+                        }?>
+               </select>
+               </td>
+          </tr>
+          <tr>
+               <td>Course Short Name</td>
+               <td><select name="courseid">
+               <?php
+                        foreach ($course as $c) {
+                           
+                            
+                            echo '<option value="'.$c->getCourseID().'" >'.$c->getCourseShortName().' </option>';
+
+                            
+                        }?>
+                    </select>
+               </td>
+          </tr>
+         
+        </table>
+        <input type="hidden" name="action" value="createic">
+        
+        <input type="submit" class="btn btn-success" value="create">
+    </form>
+
+<?php
+                    }
+
 }
 
 

@@ -1,11 +1,13 @@
 <?php
 require_once("inc/config.inc.php");
 require_once("inc/Entity/Instructor.class.php");
+require_once("inc/Entity/Instructor_Course.class.php");
 require_once("inc/Entity/Rating.class.php");
 require_once("inc/Entity/Course.class.php");
 require_once("inc/Entity/Student.class.php");
 require_once("inc/Utility/PDOService.class.php");
 require_once("inc/Utility/InstructorDAO.class.php");
+require_once("inc/Utility/Instructor_CourseDAO.class.php");
 require_once("inc/Utility/CourseDAO.class.php");
 require_once("inc/Utility/RatingDAO.class.php");
 require_once("inc/Utility/StudentDAO.class.php");
@@ -22,6 +24,25 @@ CourseDAO::initialize();
 InstructorDAO::initialize();
 StudentDAO::init();
 RatingDAO::initialize();
+Instructor_CourseDAO::initialize();
+
+
+
+
+
+if (!empty($_POST)) {
+    if ($_POST["action"] == "createic")    {
+        //Assemble the Section to Insert
+         
+        $newIC = new Instructor_Course();
+        //Send the section to the DAO for insertion
+        $newIC->setInstructorID($_POST["instructorid"]);
+        $newIC->setCourseID($_POST["courseid"]);
+        //Send the section to the DAO to be created
+        Instructor_CourseDAO::createInstructor_Course($newIC);
+        
+    }
+}
 
 //Create 
 if (!empty($_POST)) {
@@ -119,6 +140,8 @@ if (isset($_GET["action"]) && $_GET["action"] == "editinstructor")  {
     Page::editInstructorForm($instructorToEdit,CourseDAO::getCourses());
 }   
 Page::createInstructorForm(CourseDAO::getCourses());
+Page::listInstructorCourses(Instructor_CourseDAO::getInstructor_Courses());
+Page::createInstructorCourse(InstructorDAO::getInstructors(),CourseDAO::getCourses());
 
 Page::listStudents(StudentDAO::getUsers());
 Page::footerForAdminCRUD();
