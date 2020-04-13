@@ -13,6 +13,10 @@ require_once("inc/Utility/LoginManager.class.php");
 require_once("inc/Utility/Page.class.php");
 
 //Initialise the DAOs
+session_start();
+$user=$_SESSION['user'];
+if(LoginManager::verifyLogin() && $user->getUsername()=="admin")
+{
 
 CourseDAO::initialize();
 InstructorDAO::initialize();
@@ -94,7 +98,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "deletestudent")  {
 }
 
 //show
-Page::header();
+Page::headerForAdminCRUD();
 Page::listCourses(CourseDAO::getCourses());
 //If someone clicked Edit
 if (isset($_GET["action"]) && $_GET["action"] == "edit")  {
@@ -117,7 +121,11 @@ if (isset($_GET["action"]) && $_GET["action"] == "editinstructor")  {
 Page::createInstructorForm(CourseDAO::getCourses());
 
 Page::listStudents(StudentDAO::getUsers());
-Page::footer();
+Page::footerForAdminCRUD();
+}else
+{
+    header("Location: project-login.php");
+}
 
 
 ?>

@@ -40,7 +40,39 @@ class Page  {
            </body>
             </html>
     <?php }
+public static function headerForAdminCRUD() { ?>
+    
+    <!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+
+</style>
+    <title>Admin Panel</title>
+  </head>
+  <body style="width:75%;margin:auto">
+    <h1 class="text-center">Welcome, Admin!</h1>
+
+        <?php }
+ public static function footerForAdminCRUD() { ?>
+    
+    <<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <a href="project-logout.php">Logout</a>
+    
+  </body>
+</html>
+
+<?php }
     static function showUserDetails(User $u) { ?>
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
     <table class="table table-borderless">
@@ -253,93 +285,96 @@ static function showRegistrationForm() { ?>
     <?php }
 
 public static function listCourses(array $courses) { ?>
-<h3>List of available Courses<button class="login100-form-btn" onclick="myFunction()" style="float:right">Add More</button></h3>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>CourseID</th>
-                <th>Course ShortName</th>
-                <th>Course Long Name</th>
-                <th>Edit</th>
-                <th>Delete</th>
-        </thead>
-
-        <?php
-
-        //List all the courses
-        foreach ($courses as $course) {
-            echo "<tr>";
-            echo "<td>".$course->getCourseID()."</td>";
-            echo "<td>".$course->getCourseShortName()."</td>";
-            echo "<td>".$course->getCourseLongName()."</td>";
-            echo '<td><a href="?action=edit&id='.$course->getCourseID().'">Edit</td>';
-            echo '<td><a href="?action=delete&id='.$course->getCourseID().'">Delete</td>';
-            echo "</tr>";
-        } ?>
-        </table>
-                <script>
-                function myFunction() {
-        var x = document.getElementById("myForm");
-            x.style.display = "block";
+    <h3>List of available Courses</h3>
+        <table align="center" class="table table-hover table-borderless w-75 p-3">
+            <thead class="thead-dark">
+                <tr>
+                    <th>CourseID</th>
+                    <th>Course ShortName</th>
+                    <th>Course Long Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+            </thead>
+    
+            <?php
+    
+            //List all the courses
+            foreach ($courses as $course) {
+                echo "<tr>";
+                echo "<td>".$course->getCourseID()."</td>";
+                echo "<td>".$course->getCourseShortName()."</td>";
+                echo "<td>".$course->getCourseLongName()."</td>";
+                echo '<td><a href="?action=edit&id='.$course->getCourseID().'">Edit</td>';
+                echo '<td><a href="?action=delete&id='.$course->getCourseID().'">Delete</td>';
+                echo "</tr>";
+            } ?>
+            <tr><td colspan="5"><button class="btn btn-outline-dark btn-block" onclick="myFunction()">Add More</button></td></tr>
+            
+            </table>
+                    <script>
+                    function myFunction() {
+            var x = document.getElementById("myForm");
+            var y = document.getElementById("editcourse");
+                x.style.display = "block";
+                y.style.display = "none";
+            
+            }
+            </script>
         
+    <?php }
+    //add a course
+    public static function createCourseForm() {?>
+        <hr>
+        
+        <form id="myForm" ACTION="" METHOD="POST" style="display:none">
+        <h3>Create Course</h3>
+            <table align="center" class="table table-borderless table-borderless w-75 p-3">
+              <tr>
+                   <td>Course Short Name</td>
+                   <td><input type="text" name="courseshortname"></td>
+              </tr>
+              <tr>
+                   <td>Course Long Name</td>
+                   <td><input type = "text" name = "courselongname"></td>
+              </tr>
+            </table>
+            <input type="hidden" name="action" value="create">
+            
+            <input type="submit" class="btn btn-success"value="create">
+        </form>
+    
+    <?php
+                        }
+    
+                        public static function editCourseForm(Course $courseToEdit) { ?>
+                            <hr>
+                            <form id="editcourse" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
+                            <h3>Edit Course - <?php echo $courseToEdit->getCourseID(); ?></h3>
+                                <table align="center" class="table table-borderless table-borderless w-75 p-3">
+                                    <tr>
+                                        <td>Course ID</td>
+                                        <td>
+                                            <?php echo $courseToEdit->getCourseID() ;?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Course Short Name</td>
+                                    <td><input type="text" name="courseshortname" value="<?php echo $courseToEdit->getCourseShortName(); ?>"></td>
+                               </tr>
+                               <tr>
+                                    <td>Course Long Name</td>
+                                    <td><input type = "text" name = "courselongname" value="<?php echo $courseToEdit->getCourseLongName(); ?>"></td>
+                               </tr>
+                                </table>
+                                <input type="hidden" name="action" value="edit">
+                                <input type="hidden" name="courseid" value="<?php  echo $courseToEdit->getCourseID(); ?>">
+                                <input type="submit" class="btn btn-success" value="edit">
+                                
+                                
+                            </form>
+                    
+                        <?php
         }
-        </script>
-    
-<?php }
-//add a course
-public static function createCourseForm() {?>
-    <hr>
-    
-    <form id="myForm" ACTION="" METHOD="POST" style="display:none">
-    <h3>Create Course</h3>
-        <table>
-          <tr>
-               <td>Course Short Name</td>
-               <td><input type="text" name="courseshortname"></td>
-          </tr>
-          <tr>
-               <td>Course Long Name</td>
-               <td><input type = "text" name = "courselongname"></td>
-          </tr>
-        </table>
-        <input type="hidden" name="action" value="create">
-        
-        <input type="submit" value="create">
-    </form>
-
-<?php
-                    }
-
-                    public static function editCourseForm(Course $courseToEdit) { ?>
-                        <hr>
-                        <h3>Edit Course - <?php echo $courseToEdit->getCourseID(); ?></h3>
-                        <form ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
-                            <table>
-                                <tr>
-                                    <td>Course ID</td>
-                                    <td>
-                                        <?php echo $courseToEdit->getCourseID() ;?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Course Short Name</td>
-                                <td><input type="text" name="courseshortname" value="<?php echo $courseToEdit->getCourseShortName(); ?>"></td>
-                           </tr>
-                           <tr>
-                                <td>Course Long Name</td>
-                                <td><input type = "text" name = "courselongname" value="<?php echo $courseToEdit->getCourseLongName(); ?>"></td>
-                           </tr>
-                            </table>
-                            <input type="hidden" name="action" value="edit">
-                            <input type="hidden" name="courseid" value="<?php  echo $courseToEdit->getCourseID(); ?>">
-                            <input type="submit" value="edit">
-                            
-                            
-                        </form>
-                
-                    <?php
-    }
-
     static function headerForProfessor() { ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -776,9 +811,9 @@ public static function createCourseForm() {?>
 
         //Admin CRUD Operations
         public static function listInstructors(array $instructors) { ?>
-            <h3>List of available Instructors<button class="login100-form-btn" onclick="myFunction2()" style="float:right">Add More</button></h3>
-                <table class="table table-striped">
-                    <thead>
+            <h3>List of available Instructors</h3>
+                <table align="center"class="table table-hover table-borderless w-75 p-3">
+                    <thead class="thead-dark">
                         <tr>
                             <th>InstructorID</th>
                             <th>First Name</th>
@@ -801,11 +836,14 @@ public static function createCourseForm() {?>
                         echo '<td><a href="?action=deleteinstructor&id='.$instructor->getInstructorID().'">Delete</td>';
                         echo "</tr>";
                     } ?>
+                    <tr><td colspan="6"><button class="btn btn-outline-dark btn-block" onclick="myFunction2()">Add More</button></td></tr>
                     </table>
                             <script>
                             function myFunction2() {
                     var x = document.getElementById("createinstructor");
+                    var y = document.getElementById("editinstructor");
                         x.style.display = "block";
+                        y.style.display = "none";
                     
                     }
                     </script>
@@ -819,7 +857,7 @@ public static function createCourseForm() {?>
             
             <form id="createinstructor" ACTION="" METHOD="POST" style="display:none">
             <h3>Create Instructor</h3>
-                <table>
+                <table align="center" class="table table-borderless table-borderless w-75 p-3">
                   <tr>
                        <td>First Name</td>
                        <td><input type="text" name="instructorfirstname"></td>
@@ -851,7 +889,7 @@ public static function createCourseForm() {?>
                 </table>
                 <input type="hidden" name="action" value="createinstructor">
                 
-                <input type="submit" value="create">
+                <input type="submit" class="btn btn-success" value="create">
             </form>
         
         <?php
@@ -861,13 +899,14 @@ public static function createCourseForm() {?>
         
         public static function editInstructorForm(Instructor $instructorToEdit,array $courses) { ?>
             <hr>
+            
+            <form id="editinstructor" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
             <h3>Edit Instructor - <?php echo $instructorToEdit->getInstructorID(); ?></h3>
-            <form ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
-                <table>
+                <table align="center" class=" table table-borderless">
                     <tr>
                         <td>Instructor ID</td>
                         <td>
-                            <?php echo $instructorToEdit->getCourseID() ;?>
+                            <?php echo $instructorToEdit->getInstructorID() ;?>
                         </td>
                     </tr>
                     <tr>
@@ -900,7 +939,7 @@ public static function createCourseForm() {?>
                 </table>
                 <input type="hidden" name="action" value="editinstructor">
                 <input type="hidden" name="instructorid" value="<?php  echo $instructorToEdit->getInstructorID(); ?>">
-                <input type="submit" value="edit">
+                <input type="submit" class="btn btn-success"value="edit">
                 
                 
             </form>
@@ -912,8 +951,8 @@ public static function createCourseForm() {?>
         /////////////////////////////////////////////////////////////////
         public static function listStudents(array $students) { ?>
             <h3>List of registered users</h3>
-                <table class="table table-striped">
-                    <thead>
+                <table align="center"class="table table-hover table-borderless w-75 p-3">
+                    <thead class="thead-dark">
                         <tr>
                             <th>StudentID</th>
                             <th>Student First Name</th>
@@ -926,8 +965,9 @@ public static function createCourseForm() {?>
                     <?php
             
                     //List all the Instructors
+                    
                     foreach ($students as $student) {
-                        if($student->getUsername()!="Administrator"){
+                        if($student->getUsername()!="admin"){
                         echo "<tr>";
                         echo "<td>".$student->getStudentID()."</td>";
                         echo "<td>".$student->getFirstName()."</td>";

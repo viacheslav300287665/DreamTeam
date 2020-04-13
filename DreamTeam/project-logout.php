@@ -15,9 +15,9 @@ unset($_SESSION['user']);
 
 //Destroy the sesison
 session_destroy();
-
+header('Location: project-login.php');
 Page::header();
-Page::thankYou();
+
 Page::footer();
 
 ?>

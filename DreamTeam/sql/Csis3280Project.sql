@@ -112,7 +112,8 @@ VALUES ('1','2','1','1984-02-14','5','awesome'),
 ('1', '3', '2', '2005-07-16', '4', 'Very Good');
 
 INSERT INTO Student(FirstName,LastName,Email,Username,Password)
-VALUES ('sam','hill','samhill@douglascollege.ca','sam_hill','sam_hill'),
-('johnie','walker','johniewalkerk@douglascollege.ca','johnie_walker','johnie_walker');
+VALUES ('sam','hill','samhill@douglascollege.ca','sam_hill','$2y$10$NlMmMmcHG1/n3jsqsYwjp.Mb/K898fW/Bl/Cq0Y1bfNtHdsTMkxpi'),
+('johnie','walker','johniewalkerk@douglascollege.ca','johnie_walker','$2y$10$LKJHv5.t5a5JbxIq37rkSuU5Qmdoqtj3QDsdGCvuND/E8F0GzXT.S'),
+('admin','admin','admin@douglascollege.ca','admin','$2y$10$lz/s7koSPErK1WWp2OcIRuN687hpKJMl4ANt0XQMCEbfNhVkPFc9S');
 
 
