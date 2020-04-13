@@ -24,7 +24,7 @@ CREATE TABLE Course (
 DROP TABLE IF EXISTS Instructor;
 CREATE TABLE Instructor (
     InstructorID INT PRIMARY KEY AUTO_INCREMENT,
-    CourseID INT NOT NULL,
+    CourseID INT  NULL,
     FirstName TINYTEXT NOT NULL,
     LastName TINYTEXT NOT NULL,
     Email VARCHAR(50) NOT NULL,

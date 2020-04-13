@@ -86,7 +86,7 @@ if (!empty($_POST)) {
          
         $newInstructor = new Instructor();
         //Send the section to the DAO for insertion
-        $newInstructor->setCourseID($_POST["courseid"]);
+
         $newInstructor->setFirstName($_POST["instructorfirstname"]);
         $newInstructor->setLastName($_POST["instructorlastname"]);
         $newInstructor->setEmail($_POST["instructoremail"]);
@@ -98,7 +98,6 @@ if (!empty($_POST)) {
          
         $newInstructor = new Instructor();
         //Send the section to the DAO for insertion
-        $newInstructor->setCourseID($_POST["courseid"]);
         $newInstructor->setFirstName($_POST["instructorfirstname"]);
         $newInstructor->setLastName($_POST["instructorlastname"]);
         $newInstructor->setEmail($_POST["instructoremail"]);

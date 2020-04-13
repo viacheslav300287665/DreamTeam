@@ -62,7 +62,7 @@ public static function headerForAdminCRUD() { ?>
         <?php }
  public static function footerForAdminCRUD() { ?>
     
-    <<!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -874,22 +874,7 @@ public static function listCourses(array $courses) { ?>
                        <td>Last Name</td>
                        <td><input type = "text" name = "instructorlastname"></td>
                   </tr>
-                  <tr>
-                       <td>Course</td>               
-                           <td> <select name="courseid">
-                            <?php
-                                foreach ($courses as $course) {
-                                    //Go through the courses, print out the option tag,
-                                    //where relevant and the courseID matches the section->courseID then use the SELECTED attribute.
-                                    
-                                    echo '<option value="'.$course->getCourseID().'" >'.$course->getCourseShortName().' </option>';
-        
-                                    
-                                }?>
-                                   
-                            </select>
-                            </td>
-                        </tr>
+            
                   <tr>
                        <td>Email</td>
                        <td><input type = "email" name = "instructoremail"></td>
@@ -925,21 +910,9 @@ public static function listCourses(array $courses) { ?>
                     <td>Instructor Last Name</td>
                     <td><input type = "text" name = "instructorlastname" value="<?php echo $instructorToEdit->getLastName(); ?>"></td>
                </tr>
-               <td>Course</td>               
-                           <td> <select name="courseid">
-                            <?php
-                                foreach ($courses as $course) {
-                                    //Go through the courses, print out the option tag,
-                                    //where relevant and the courseID matches the section->courseID then use the SELECTED attribute.
-                                    
-                                    echo '<option value="'.$course->getCourseID().'" >'.$course->getCourseShortName().' </option>';
-        
-                                    
-                                }?>
-                                   
-                            </select>
-                            </td>
-                        </tr>
+
+               
+            
                <tr>
                     <td>Instructor Email</td>
                     <td><input type = "text" name = "instructoremail" value="<?php echo $instructorToEdit->getEmail(); ?>"></td>
@@ -1048,7 +1021,7 @@ public static function createInstructorCourse(array $instructor,array $course) {
                         foreach ($instructor as $i) {
                            
                             
-                            echo '<option value="'.$i->getInstructorID().'" >'.$i->getFirstName().' </option>';
+                            echo '<option value="'.$i->getInstructorID().'" >'.$i->getFirstName()." ".$i->getLastName().' </option>';
 
                             
                         }?>

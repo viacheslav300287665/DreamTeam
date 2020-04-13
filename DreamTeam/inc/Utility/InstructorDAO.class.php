@@ -12,12 +12,11 @@ class InstructorDAO  {
     static function createInstructor(Instructor $newInstructor) {
 
         //Create means INSERT
-        $sql="INSERT INTO Instructor (CourseID,FirstName,LastName,Email)
-        VALUES (:courseid,:firstname,:lastname,:email);";
+        $sql="INSERT INTO Instructor (FirstName,LastName,Email)
+        VALUES (:firstname,:lastname,:email);";
 
         //QUERY BIND EXECUTE RETURN
         self::$_db->query($sql);
-        self::$_db->bind(":courseid",$newInstructor->getCourseID());
         self::$_db->bind(":firstname",$newInstructor->getFirstName());
         self::$_db->bind(":lastname",$newInstructor->getLastName());
         self::$_db->bind(":email",$newInstructor->getEmail());
@@ -61,12 +60,11 @@ class InstructorDAO  {
     
     static function updateInstructor (Instructor $instructorToUpdate) {
             //update means UPDATE query
-        $sql = "UPDATE Instructor SET CourseID = :courseid,FirstName=:firstname,LastName=:lastname,Email=:email
+        $sql = "UPDATE Instructor SET FirstName=:firstname,LastName=:lastname,Email=:email
                 WHERE InstructorID=:instructorid;";
             
         self::$_db->query($sql);
-        
-        self::$_db->bind(":courseid",$instructorToUpdate->getCourseID());
+
         self::$_db->bind(":firstname",$instructorToUpdate->getFirstName());
         self::$_db->bind(":lastname",$instructorToUpdate->getLastName());
         self::$_db->bind(":email",$instructorToUpdate->getEmail());
