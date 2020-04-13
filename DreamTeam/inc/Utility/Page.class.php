@@ -245,23 +245,23 @@ static function showRegistrationForm() { ?>
 						Registration Form
 					</span>
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="username" placeholder="Username" pattern=".{3,20}" title="3 Characters for username minimum!" required >
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password" pattern=".{6,20}" title="6 Characters for password minimum!" required >
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
                     <div class="wrap-input100 validate-input" data-validate="Enter First Name">
-						<input class="input100" type="text" name="firstname" placeholder="First Name">
+						<input class="input100" type="text" name="firstname" placeholder="First Name" pattern=".{2,}" title="2 Characters for username First Name!" required >
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
                     <div class="wrap-input100 validate-input" data-validate = "Enter Last Name">
-						<input class="input100" type="text" name="lastname" placeholder="Last Name">
+						<input class="input100" type="text" name="lastname" placeholder="Last Name" pattern=".{2,}" title="2 Characters for Last Name minimum!" required>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
                     <div class="wrap-input100 validate-input" data-validate = "Enter Email">
-						<input class="input100" type="email" name="email" placeholder="Email">
+						<input class="input100" type="email" name="email" placeholder="Email" pattern=".{6,50}" title="6 Characters for email minimum!" required >
 						<span class="focus-input100" data-placeholder="&#x2709;"></span>
 					</div>
 					<div class="container-login100-form-btn">
