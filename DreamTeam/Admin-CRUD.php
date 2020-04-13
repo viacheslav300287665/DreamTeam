@@ -14,8 +14,10 @@ require_once("inc/Utility/Page.class.php");
 
 //Initialise the DAOs
 session_start();
-if(LoginManager::verifyLogin())
+$user=$_SESSION['user'];
+if(LoginManager::verifyLogin() && $user->getUsername()=="admin")
 {
+
 CourseDAO::initialize();
 InstructorDAO::initialize();
 StudentDAO::init();
