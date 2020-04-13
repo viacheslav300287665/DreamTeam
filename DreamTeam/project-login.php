@@ -24,7 +24,7 @@ if (!empty($_POST)) {
     //Get the current user 
     $currentUser = StudentDAO::getStudent($_POST['username']);
     //Check the DAO returned an object of type user
-
+    if ($currentUser!=false) {
         //Check the password
         if ($currentUser->verifyPassword($_POST['password']))  {
         // if ( $currentUser->getUserName() == $_POST['password'])  {
@@ -40,6 +40,12 @@ if (!empty($_POST)) {
             header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/project-proffessor.php');
             }
         }
+
+    }else{?>
+        <script>
+        alert("Enter valid username and password combination");
+        </script>
+    <?php }
 }
 
 //Set the age Title
