@@ -96,6 +96,11 @@ class Page  {
 							Login
 						</button>
 					</div>
+                    <div class="text-center p-t-90">
+                        <a class="txt1" href="project-registration.php">
+                            Click here to SignUp
+                        </a>
+                        </div>
 				</form>
 			</div>
 		</div>
