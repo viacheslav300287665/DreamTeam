@@ -585,6 +585,7 @@ public static function listCourses(array $courses) { ?>
                 autocomplete(document.getElementById("myInput"), countries);
         
                 </script>
+                <br><br/>
 <?php }
 
     static function reviewsSection(array $reviews, float $avgForInstructor, Instructor $instructor) { ?>
