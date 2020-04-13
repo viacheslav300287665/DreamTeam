@@ -33,9 +33,12 @@ if (!empty($_POST)) {
             session_start();
             //Set the user to logged in
             $_SESSION['user'] = $currentUser;
-
+            if($currentUser->getUsername()=="admin"){
+                header('Location: Admin-CRUD.php');
+            }else{
             //Send the user to the user managment page Lab09SHi_56789-updateaccount.php
             header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/project-proffessor.php');
+            }
         }
 }
 

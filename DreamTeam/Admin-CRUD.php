@@ -13,7 +13,9 @@ require_once("inc/Utility/LoginManager.class.php");
 require_once("inc/Utility/Page.class.php");
 
 //Initialise the DAOs
-
+session_start();
+if(LoginManager::verifyLogin())
+{
 CourseDAO::initialize();
 InstructorDAO::initialize();
 StudentDAO::init();
@@ -118,6 +120,10 @@ Page::createInstructorForm(CourseDAO::getCourses());
 
 Page::listStudents(StudentDAO::getUsers());
 Page::footerForAdminCRUD();
+}else
+{
+    header("Location: project-login.php");
+}
 
 
 ?>
