@@ -73,7 +73,13 @@ public function getRating() :int{
     return $this->Rating;
 }
 public function getReview():string{
-     return$this->Review;
+    return$this->Review;
+}
+public function getFirstName():string{
+    return$this->FirstName;
+}
+public function getLastName():string{
+    return$this->LastName;
 }
 public function jsonSerialize()
 {
