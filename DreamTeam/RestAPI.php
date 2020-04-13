@@ -97,7 +97,46 @@ switch ($_SERVER["REQUEST_METHOD"])   {
             $myJSON[] = $serializedCourses;
             $myJSON[] = $serializedInstructor;
             echo json_encode($myJSON);
-            }                    
+            } 
+            else{
+                InstructorDAO::initialize();
+                $instructor = InstructorDAO::getInstructors();
+                RatingDAO::initialize();
+                CourseDAO::initialize();
+                foreach($instructor as $instructorr){
+                    $ratings[] = RatingDAO::getInstructorReviews($instructorr);                
+                    $courses[] = CourseDAO::getInstructorCourse($instructorr);
+                }
+            //Walk the customers and add them to a serialized array to return.
+            $serializedRatings = array();
+            $serializedCourses = array();
+            $serialized = array();
+            $serializedInstructor;
+            foreach ($ratings as $rating){
+                foreach($rating as $ratingg){
+                    // $serializedRatings[] = $ratingg->jsonSerialize();         
+                    $serialized[] = $ratingg->jsonSerialize();         
+                }
+            }
+            foreach ($courses as $course)    {
+                foreach($course as $coursee){
+                    //$serializedCourses[] = $coursee->jsonSerialize();
+                    $serialized[] = $coursee->jsonSerialize();
+                }
+            }    
+            foreach ($instructor as $instructorr)    {
+                // $serializedInstructor[] = $instructorr->jsonSerialize();
+                $serialized[] = $instructorr->jsonSerialize();
+            }   
+            //Return the results
+            //Set the header
+            header('Content-Type: application/json');
+            //Return the entire array
+            // $myJSON[] = $serializedRatings; 
+            // $myJSON[] = $serializedCourses;
+            // $myJSON[] = $serializedInstructor;
+            echo json_encode($serialized);
+            }                   
     break;
    
     case "PUT":
