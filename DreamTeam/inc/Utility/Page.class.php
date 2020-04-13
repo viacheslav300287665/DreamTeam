@@ -575,8 +575,8 @@ public static function listCourses(array $courses) { ?>
                 var countries = [];
                 //console.log(countries["abc"]);
 
-                <?php for($x=0;$x<sizeof($autofillinfo[14]);$x++){?>
-                        countries[<?php echo $x; ?>] = "<?php $teacherFullName = $autofillinfo[14][$x];
+                <?php $size = sizeof($autofillinfo); for($x=0;$x<sizeof($autofillinfo[$size-1]);$x++){?>
+                        countries[<?php echo $x; ?>] = "<?php $teacherFullName = $autofillinfo[$size-1][$x];
                          echo $teacherFullName; ?>" ;
                <?php } 
                 ?>
