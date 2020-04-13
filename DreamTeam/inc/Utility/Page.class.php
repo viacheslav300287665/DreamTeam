@@ -981,6 +981,15 @@ public static function listCourses(array $courses) { ?>
                     </table>
                 
             <?php }
+            public static function showErrorsList($errors){ ?>
+                <ul class="list-group">
+                <?php 
+                foreach ($errors as $error){
+                    echo "<li class='list-group-item'>". $error . "</li>";
+                }
+                ?>
+                </ul> 
+            <?php }
 
 }
 

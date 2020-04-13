@@ -17,9 +17,14 @@ Page::searchFormProfessor();
 $student = $_SESSION["user"];
 if (!empty($_GET)) {
     if (isset($_GET["action"]) && $_GET["action"] == "searchButton")    {
-        $fullName = $_GET["search"];       
+        $fullName = $_GET["search"];
+        $errors = array();                
             if(strpos($fullName, ' ') !== false) {             
-                $jInstrucorReviewsAndCourses = RestClient::call("GET", array('search' => $_GET["search"])); 
+                $jInstrucorReviewsAndCourses = RestClient::call("GET", array('search' => $_GET["search"]));
+                if ($jInstrucorReviewsAndCourses == null){
+                    $errors[] = "Cannot Find Instructor, Try Again!";
+                    Page::showErrorsList($errors);
+                } else {
                 $reviews = array();
                 $courses = array(); 
                 $instructor = new Instructor();
@@ -58,13 +63,13 @@ if (!empty($_GET)) {
                         $averageForInstructor = $totalRating / sizeof($reviews); 
                     }              
                     Page::reviewsSection($reviews, $averageForInstructor, $instructor);
-                    Page::ratingsForm($courses, $instructor);  
-                                      
-                             
-                    }
-            else {                
+                    Page::ratingsForm($courses, $instructor); 
+                }
+                                            
+            }
+            else {                               
              Page::footerforProfessor();
-                exit();
+                //exit();
            }
          }
     }
