@@ -13,7 +13,8 @@ session_start();
 LoginManager::verifyLogin();
 
 Page::headerForProfessor();
-Page::searchFormProfessor();
+$getDataForAutoFill = RestClient::call("GET");
+Page::searchFormProfessor($getDataForAutoFill);
 $student = $_SESSION["user"];
 if (!empty($_GET)) {
     if (isset($_GET["action"]) && $_GET["action"] == "searchButton")    {
