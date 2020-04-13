@@ -124,6 +124,7 @@ Page::listStudents(StudentDAO::getUsers());
 Page::footerForAdminCRUD();
 }else
 {
+    session_destroy();
     header("Location: project-login.php");
 }
 

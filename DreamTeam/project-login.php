@@ -17,14 +17,14 @@ require_once("inc/Utility/Page.class.php");
  
 //Check if the form was posted
 if (!empty($_POST)) {
-
+    $errors = array();
 
     //Initialize the DAO
     StudentDAO::init();
     //Get the current user 
     $currentUser = StudentDAO::getStudent($_POST['username']);
     //Check the DAO returned an object of type user
-
+    if ($currentUser!=false) {
         //Check the password
         if ($currentUser->verifyPassword($_POST['password']))  {
         // if ( $currentUser->getUserName() == $_POST['password'])  {
@@ -40,6 +40,11 @@ if (!empty($_POST)) {
             header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/project-proffessor.php');
             }
         }
+
+    }else{
+        $errors[] = "Your Username or Password is wrong!";
+        Page::showErrorsList($errors);
+     }
 }
 
 //Set the age Title
