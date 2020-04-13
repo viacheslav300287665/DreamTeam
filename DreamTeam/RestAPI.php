@@ -103,9 +103,18 @@ switch ($_SERVER["REQUEST_METHOD"])   {
                 $instructor = InstructorDAO::getInstructors();
                 RatingDAO::initialize();
                 CourseDAO::initialize();
+                $instructorFullName = array();
+                // $instructorLN = array();
+
                 foreach($instructor as $instructorr){
+                    // $instructorFirstName = new Instructor();
+                    // $instructorLastName = new Instructor();
                     $ratings[] = RatingDAO::getInstructorReviews($instructorr);                
                     $courses[] = CourseDAO::getInstructorCourse($instructorr);
+                    $instructorFullName[] = $instructorr->getFirstName()." ".$instructorr->getLastName();
+                    // $instructorLastName->setLastName($instructorr->getLastName());
+                    // $instructorFN[] = $instructorFirstName;
+                    // $instructorLN[] = $instructorLastName;
                 }
             //Walk the customers and add them to a serialized array to return.
             $serializedRatings = array();
@@ -127,7 +136,19 @@ switch ($_SERVER["REQUEST_METHOD"])   {
             foreach ($instructor as $instructorr)    {
                 // $serializedInstructor[] = $instructorr->jsonSerialize();
                 $serialized[] = $instructorr->jsonSerialize();
-            }   
+            }
+            // foreach ($instructorFN as $instructorr)    {
+            //     // $serializedInstructor[] = $instructorr->jsonSerialize();
+            //     $serial[] = $instructorr->jsonFirstSerializeForAutoFill();
+            // }
+            // $serialized[] = $serial;
+
+            // foreach ($instructorLN as $instructorr)    {
+            //     // $serializedInstructor[] = $instructorr->jsonSerialize();
+            //     $seriall[] = $instructorr->jsonLastSerializeForAutoFill();
+            // }
+            $serialized[] = $instructorFullName;
+
             //Return the results
             //Set the header
             header('Content-Type: application/json');

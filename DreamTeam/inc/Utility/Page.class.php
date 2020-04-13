@@ -440,7 +440,7 @@ public static function listCourses(array $courses) { ?>
        
 <?php }
 
-    static function searchFormProfessor() { ?>
+    static function searchFormProfessor($autofillinfo) { ?>
         <!-- Page Preloder -->
         <div id="preloder">
                 <div class="loader"></div>
@@ -569,15 +569,20 @@ public static function listCourses(array $courses) { ?>
                     closeAllLists(e.target);
                 });
                 }
-
+               
                 /*An array containing all the country names in the world:*/
-                var countries = ["Rahim Virani","Michael Hrybyk","Bambang Sarif","Reza Ghaeli"];
-
+                // var countries = ["Rahim Virani","Michael Hrybyk","Bambang Sarif","Reza Ghaeli"];
+                var countries = [];
+                <?php for($x=0;$x<sizeof($autofillinfo[10]);$x++){?>
+                        countries[<?php echo $x; ?>] = "<?php $teacherFullName = $autofillinfo[10][$x];
+                         echo $teacherFullName; ?>" ;
+               <?php } 
+                ?>
                 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
                     autocomplete(document.getElementById("myInput"), countries);
                 </script>
 
-            <br></br>
+            <br><br/>
     <?php }
 
     static function reviewsSection(array $reviews, float $avgForInstructor, Instructor $instructor) { ?>
