@@ -568,22 +568,24 @@ public static function listCourses(array $courses) { ?>
                 document.addEventListener("click", function (e) {
                     closeAllLists(e.target);
                 });
+                
                 }
-               
                 /*An array containing all the country names in the world:*/
                 // var countries = ["Rahim Virani","Michael Hrybyk","Bambang Sarif","Reza Ghaeli"];
                 var countries = [];
-                <?php for($x=0;$x<sizeof($autofillinfo[10]);$x++){?>
-                        countries[<?php echo $x; ?>] = "<?php $teacherFullName = $autofillinfo[10][$x];
+                //console.log(countries["abc"]);
+
+                <?php for($x=0;$x<sizeof($autofillinfo[14]);$x++){?>
+                        countries[<?php echo $x; ?>] = "<?php $teacherFullName = $autofillinfo[14][$x];
                          echo $teacherFullName; ?>" ;
                <?php } 
                 ?>
+                console.log(countries);
                 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-                    autocomplete(document.getElementById("myInput"), countries);
+                autocomplete(document.getElementById("myInput"), countries);
+        
                 </script>
-
-            <br><br/>
-    <?php }
+<?php }
 
     static function reviewsSection(array $reviews, float $avgForInstructor, Instructor $instructor) { ?>
         <!-- Filter Section Begin -->
