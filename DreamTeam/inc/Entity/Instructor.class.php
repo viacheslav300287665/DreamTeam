@@ -36,6 +36,9 @@ class Instructor {
     return $this->InstructorID;
     }
     public function getCourseID():int{
+        if($this->CourseID==null){
+            $this->CourseID=-1;
+        }
         return $this->CourseID;
     }
 

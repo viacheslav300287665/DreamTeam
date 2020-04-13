@@ -30,7 +30,9 @@ if (!empty($_GET)) {
                 $courses = array(); 
                 $instructor = new Instructor();
                 $instructor->setInstructorID($jInstrucorReviewsAndCourses[2]->InstructorID);
+                if($jInstrucorReviewsAndCourses[2]->CourseID != null){
                 $instructor->setCourseID($jInstrucorReviewsAndCourses[2]->CourseID); 
+                }
                 $instructor->setFirstName($jInstrucorReviewsAndCourses[2]->FirstName); 
                 $instructor->setLastName($jInstrucorReviewsAndCourses[2]->LastName); 
                 $instructor->setEmail($jInstrucorReviewsAndCourses[2]->Email);              
@@ -96,7 +98,9 @@ if (!empty($_GET)) {
             $courses = array(); 
             $instructor = new Instructor();
             $instructor->setInstructorID($jInstrucorReviewsAndCourses[2]->InstructorID);
-            $instructor->setCourseID($jInstrucorReviewsAndCourses[2]->CourseID); 
+            if($jInstrucorReviewsAndCourses[2]->CourseID != null){
+                $instructor->setCourseID($jInstrucorReviewsAndCourses[2]->CourseID); 
+            }
             $instructor->setFirstName($jInstrucorReviewsAndCourses[2]->FirstName); 
             $instructor->setLastName($jInstrucorReviewsAndCourses[2]->LastName); 
             $instructor->setEmail($jInstrucorReviewsAndCourses[2]->Email);              
@@ -156,7 +160,9 @@ if (!empty($_GET)) {
             $courses = array(); 
             $instructor = new Instructor();
             $instructor->setInstructorID($jInstrucorReviewsAndCourses[2]->InstructorID);
-            $instructor->setCourseID($jInstrucorReviewsAndCourses[2]->CourseID); 
+            if($jInstrucorReviewsAndCourses[2]->CourseID != null){
+                $instructor->setCourseID($jInstrucorReviewsAndCourses[2]->CourseID); 
+            }
             $instructor->setFirstName($jInstrucorReviewsAndCourses[2]->FirstName); 
             $instructor->setLastName($jInstrucorReviewsAndCourses[2]->LastName); 
             $instructor->setEmail($jInstrucorReviewsAndCourses[2]->Email);              
@@ -204,7 +210,9 @@ if (isset($_GET["action"]) && $_GET["action"] == "deleteButton"){
             $courses = array(); 
             $instructor = new Instructor();
             $instructor->setInstructorID($jInstrucorReviewsAndCourses[2]->InstructorID);
-            $instructor->setCourseID($jInstrucorReviewsAndCourses[2]->CourseID); 
+            if($jInstrucorReviewsAndCourses[2]->CourseID != null){
+                $instructor->setCourseID($jInstrucorReviewsAndCourses[2]->CourseID); 
+            }
             $instructor->setFirstName($jInstrucorReviewsAndCourses[2]->FirstName); 
             $instructor->setLastName($jInstrucorReviewsAndCourses[2]->LastName); 
             $instructor->setEmail($jInstrucorReviewsAndCourses[2]->Email);              
@@ -252,7 +260,9 @@ if (isset($_GET["action"]) && $_GET["action"] == "editButton"){
             $courses = array(); 
             $instructor = new Instructor();
             $instructor->setInstructorID($jInstrucorReviewsAndCourses[2]->InstructorID);
-            $instructor->setCourseID($jInstrucorReviewsAndCourses[2]->CourseID); 
+            if($jInstrucorReviewsAndCourses[2]->CourseID != null){
+                $instructor->setCourseID($jInstrucorReviewsAndCourses[2]->CourseID); 
+            }
             $instructor->setFirstName($jInstrucorReviewsAndCourses[2]->FirstName); 
             $instructor->setLastName($jInstrucorReviewsAndCourses[2]->LastName); 
             $instructor->setEmail($jInstrucorReviewsAndCourses[2]->Email);  
