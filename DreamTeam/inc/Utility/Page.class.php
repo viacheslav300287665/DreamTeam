@@ -51,13 +51,12 @@ public static function headerForAdminCRUD() { ?>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <style>
-
-</style>
+ 
     <title>Admin Panel</title>
+    
   </head>
-  <body style="width:75%;margin:auto">
-    <h1 class="text-center">Welcome, Admin!</h1>
+  <body style="width:75%;margin:auto;background-color:light-pink">
+    <h1 class="text-center font-weight-bolder">Welcome, Admin!</h1>
 
         <?php }
  public static function footerForAdminCRUD() { ?>
@@ -285,10 +284,10 @@ static function showRegistrationForm() { ?>
     <?php }
 
 public static function listCourses(array $courses) { ?>
-    <h3>List of available Courses</h3>
+    <h3 class="font-italic">List of available Courses</h3>
         <table align="center" class="table table-hover table-borderless w-75 p-3">
             <thead class="thead-dark">
-                <tr>
+                <tr >
                     <th>CourseID</th>
                     <th>Course ShortName</th>
                     <th>Course Long Name</th>
@@ -297,15 +296,15 @@ public static function listCourses(array $courses) { ?>
             </thead>
     
             <?php
-    
+     
             //List all the courses
             foreach ($courses as $course) {
                 echo "<tr>";
                 echo "<td>".$course->getCourseID()."</td>";
                 echo "<td>".$course->getCourseShortName()."</td>";
                 echo "<td>".$course->getCourseLongName()."</td>";
-                echo '<td><a href="?action=edit&id='.$course->getCourseID().'">Edit</td>';
-                echo '<td><a href="?action=delete&id='.$course->getCourseID().'">Delete</td>';
+                echo '<td><a class="text-warning" href="?action=edit&id='.$course->getCourseID().'">Edit</td>';
+                echo '<td><a class="text-danger"href="?action=delete&id='.$course->getCourseID().'">Delete</td>';
                 echo "</tr>";
             } ?>
             <tr><td colspan="5"><button class="btn btn-outline-dark btn-block" onclick="myFunction()">Add More</button></td></tr>
@@ -327,7 +326,7 @@ public static function listCourses(array $courses) { ?>
         <hr>
         
         <form id="myForm" ACTION="" METHOD="POST" style="display:none">
-        <h3>Create Course</h3>
+        <h3 class="font-italic">Create Course</h3>
             <table align="center" class="table table-borderless table-borderless w-75 p-3">
               <tr>
                    <td>Course Short Name</td>
@@ -349,7 +348,7 @@ public static function listCourses(array $courses) { ?>
                         public static function editCourseForm(Course $courseToEdit) { ?>
                             <hr>
                             <form id="editcourse" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
-                            <h3>Edit Course - <?php echo $courseToEdit->getCourseID(); ?></h3>
+                            <h3 class="font-italic">Edit Course - <?php echo $courseToEdit->getCourseID(); ?></h3>
                                 <table align="center" class="table table-borderless table-borderless w-75 p-3">
                                     <tr>
                                         <td>Course ID</td>
@@ -819,7 +818,7 @@ public static function listCourses(array $courses) { ?>
 
         //Admin CRUD Operations
         public static function listInstructors(array $instructors) { ?>
-            <h3>List of available Instructors</h3>
+            <h3 class="font-italic">List of available Instructors</h3>
                 <table align="center"class="table table-hover table-borderless w-75 p-3">
                     <thead class="thead-dark">
                         <tr>
@@ -840,8 +839,8 @@ public static function listCourses(array $courses) { ?>
                         echo "<td>".$instructor->getFirstName()."</td>";
                         echo "<td>".$instructor->getLastName()."</td>";
                         echo "<td>".$instructor->getEmail()."</td>";
-                        echo '<td><a href="?action=editinstructor&id='.$instructor->getInstructorID().'">Edit</td>';
-                        echo '<td><a href="?action=deleteinstructor&id='.$instructor->getInstructorID().'">Delete</td>';
+                        echo '<td><a class="text-warning" href="?action=editinstructor&id='.$instructor->getInstructorID().'">Edit</td>';
+                        echo '<td><a class="text-danger" href="?action=deleteinstructor&id='.$instructor->getInstructorID().'">Delete</td>';
                         echo "</tr>";
                     } ?>
                     <tr><td colspan="6"><button class="btn btn-outline-dark btn-block" onclick="myFunction2()">Add More</button></td></tr>
@@ -864,7 +863,7 @@ public static function listCourses(array $courses) { ?>
             <hr>
             
             <form id="createinstructor" ACTION="" METHOD="POST" style="display:none">
-            <h3>Create Instructor</h3>
+            <h3 class="font-italic">Create Instructor</h3>
                 <table align="center" class="table table-borderless table-borderless w-75 p-3">
                   <tr>
                        <td>First Name</td>
@@ -894,7 +893,7 @@ public static function listCourses(array $courses) { ?>
             <hr>
             
             <form id="editinstructor" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
-            <h3>Edit Instructor - <?php echo $instructorToEdit->getInstructorID(); ?></h3>
+            <h3 class="font-italic">Edit Instructor - <?php echo $instructorToEdit->getInstructorID(); ?></h3>
                 <table align="center" class=" table table-borderless">
                     <tr>
                         <td>Instructor ID</td>
@@ -931,7 +930,7 @@ public static function listCourses(array $courses) { ?>
         ///List of available Students/users
         /////////////////////////////////////////////////////////////////
         public static function listStudents(array $students) { ?>
-            <h3>List of registered users</h3>
+            <h3 class="font-italic">List of registered users</h3>
                 <table align="center"class="table table-hover table-borderless w-75 p-3">
                     <thead class="thead-dark">
                         <tr>
@@ -955,7 +954,7 @@ public static function listCourses(array $courses) { ?>
                         echo "<td>".$student->getLastName()."</td>";
                         echo "<td>".$student->getEmail()."</td>";
                         echo "<td>".$student->getUsername()."</td>";
-                        echo '<td><a href="?action=deletestudent&id='.$student->getStudentID().'">Delete</td>';
+                        echo '<td><a class="text-danger" href="?action=deletestudent&id='.$student->getStudentID().'">Delete</td>';
                         echo "</tr>";
                         }
                     } ?>
@@ -973,7 +972,7 @@ public static function listCourses(array $courses) { ?>
             <?php }
 
 public static function listInstructorCourses(array $instructorCourses) { ?>
-    <h3>List of Courses each instructor is taking</h3>
+    <h3 class="font-italic">List of Courses each instructor is teaching</h3>
         <table align="center"class="table table-hover table-borderless w-75 p-3">
             <thead class="thead-dark">
                 <tr>
@@ -1011,7 +1010,7 @@ public static function createInstructorCourse(array $instructor,array $course) {
     <hr>
     
     <form id="createinstructorcourse" ACTION="" METHOD="POST" style="display:none" >
-    <h3>Assign a course to Instructor</h3>
+    <h3 class="font-italic">Assign a course to Instructor</h3>
         <table align="center" class="table table-borderless table-borderless w-75 p-3">
           <tr>
                <td>Instructor Name</td>
