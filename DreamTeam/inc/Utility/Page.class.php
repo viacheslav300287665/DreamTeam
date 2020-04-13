@@ -307,7 +307,7 @@ public static function listCourses(array $courses) { ?>
                 echo '<td><a class="text-danger"href="?action=delete&id='.$course->getCourseID().'">Delete</td>';
                 echo "</tr>";
             } ?>
-            <tr><td colspan="5"><button class="btn btn-outline-dark btn-block" onclick="myFunction()">Add More</button></td></tr>
+            <tr><td colspan="5"><button class="btn btn-outline-success btn-block" onclick="myFunction()">Add More</button></td></tr>
             
             </table>
                     <script>
@@ -843,7 +843,7 @@ public static function listCourses(array $courses) { ?>
                         echo '<td><a class="text-danger" href="?action=deleteinstructor&id='.$instructor->getInstructorID().'">Delete</td>';
                         echo "</tr>";
                     } ?>
-                    <tr><td colspan="6"><button class="btn btn-outline-dark btn-block" onclick="myFunction2()">Add More</button></td></tr>
+                    <tr><td colspan="6"><button class="btn btn-outline-success btn-block" onclick="myFunction2()">Add More</button></td></tr>
                     </table>
                             <script>
                             function myFunction2() {
@@ -993,7 +993,7 @@ public static function listInstructorCourses(array $instructorCourses) { ?>
                 echo "<td>".$instructorCourse->CourseLongName."</td>";
                 echo "</tr>";
             } ?>
-            <tr><td colspan="4"><button class="btn btn-outline-dark btn-block" onclick="myFunction3()">Assign a course</button></td></tr>
+            <tr><td colspan="4"><button class="btn btn-outline-success btn-block" onclick="myFunction3()">Assign a course</button></td></tr>
             </table>
                     <script>
                     function myFunction3() {
