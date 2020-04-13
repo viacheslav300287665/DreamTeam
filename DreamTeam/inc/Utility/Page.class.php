@@ -749,7 +749,7 @@ public static function listCourses(array $courses) { ?>
                                 <select name="courseNumber" class="browser-default custom-select" style="margin-bottom: 3%;">                          
                                 <?php                       
                                 foreach ($courses as $course) {
-                                        if($course->getCourseID() == $instructor->getCourseID()){?>
+                                        if($course->getCourseID() == $instructor->getCourseID() && $instructor->getCourseID()!=-1){?>
                                     <option value=<?php echo $course->getCourseID();?> selected><?php echo $course->getCourseShortName() . " " . $course->getCourseLongName();  ?>   </option>      
                                         <?php }
                                         else{ ?>
@@ -757,6 +757,7 @@ public static function listCourses(array $courses) { ?>
                                 <?php
                                           }
                                 }
+                        
                                 ?>                           
                                 </select>
                                 <label style="float:left;">Enter your experience</label>  
