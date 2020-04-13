@@ -17,7 +17,7 @@ require_once("inc/Utility/Page.class.php");
  
 //Check if the form was posted
 if (!empty($_POST)) {
-
+    $errors = array();
 
     //Initialize the DAO
     StudentDAO::init();
@@ -41,11 +41,10 @@ if (!empty($_POST)) {
             }
         }
 
-    }else{?>
-        <script>
-        alert("Enter valid username and password combination");
-        </script>
-    <?php }
+    }else{
+        $errors[] = "Your Username or Password is wrong!";
+        Page::showErrorsList($errors);
+     }
 }
 
 //Set the age Title
