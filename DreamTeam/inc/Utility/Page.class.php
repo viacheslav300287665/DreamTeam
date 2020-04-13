@@ -906,7 +906,7 @@ public static function listCourses(array $courses) { ?>
                     <tr>
                         <td>Instructor ID</td>
                         <td>
-                            <?php echo $instructorToEdit->getCourseID() ;?>
+                            <?php echo $instructorToEdit->getInstructorID() ;?>
                         </td>
                     </tr>
                     <tr>
