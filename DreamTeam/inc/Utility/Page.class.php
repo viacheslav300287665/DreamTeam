@@ -330,11 +330,11 @@ public static function listCourses(array $courses) { ?>
             <table align="center" class="table table-borderless table-borderless w-75 p-3">
               <tr>
                    <td>Course Short Name</td>
-                   <td><input type="text" name="courseshortname"></td>
+                   <td><input type="text" name="courseshortname" required></td>
               </tr>
               <tr>
                    <td>Course Long Name</td>
-                   <td><input type = "text" name = "courselongname"></td>
+                   <td><input type = "text" name = "courselongname" required></td>
               </tr>
             </table>
             <input type="hidden" name="action" value="create">
@@ -867,19 +867,19 @@ public static function listCourses(array $courses) { ?>
                 <table align="center" class="table table-borderless table-borderless w-75 p-3">
                   <tr>
                        <td>First Name</td>
-                       <td><input type="text" name="instructorfirstname"></td>
+                       <td><input type="text" name="instructorfirstname" required></td>
                   </tr>
                   <tr>
                        <td>Last Name</td>
-                       <td><input type = "text" name = "instructorlastname"></td>
+                       <td><input type = "text" name = "instructorlastname" required></td>
                   </tr>
             
                   <tr>
                        <td>Email</td>
-                       <td><input type = "email" name = "instructoremail"></td>
+                       <td><input type = "email" name = "instructoremail" required></td>
                   </tr>
                 </table>
-                <input type="hidden" name="action" value="createinstructor">
+                <input type="hidden" name="action" value="createinstructor" >
                 
                 <input type="submit" class="btn btn-success" value="create">
             </form>
