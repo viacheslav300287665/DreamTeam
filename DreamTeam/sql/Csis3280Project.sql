@@ -94,7 +94,7 @@ VALUES ('CSIS 3280 ','Web Scripting'),
 INSERT INTO Instructor(CourseID,FirstName,LastName,Email)
 VALUES ('1','Rahim','Virani','rahimvirani@douglascollege.ca'),
 ('3','Michael','Hrybyk','michealhrybyk@douglascollege.ca'),
-('2','Bambang ','Sarif','bambangsarif@douglascollege.ca'),
+('2','Bambang','Sarif','bambangsarif@douglascollege.ca'),
 ('3','Reza','Ghaeli','rezaghaeli@douglascollege.ca');
 
 INSERT INTO Instructor_Course (InstructorID,CourseID)
