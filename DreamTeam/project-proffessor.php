@@ -137,6 +137,8 @@ if (!empty($_GET)) {
                 "Review" => $_POST["experience"],
                 "StudentID" => $student->getStudentID(),
                 "RatingID" => $_POST["ratingID"],
+                // "FirstName" => $student->getFirstName(),
+                // "LastName" => $student->getLastName(),
                 "Date" => $date
             );         
             RestClient::call("PUT", $postData);

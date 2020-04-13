@@ -71,16 +71,18 @@ class RatingDAO  {
             //update means UPDATE query
         $sql = "UPDATE Rating SET InstructorID = :instructorid,CourseID=:courseID, StudentID = :studentID,Date = :date, Rating=:rating,Review=:review
                 WHERE RatingID=:ratingid;";
-            
+            //, FirstName=:firstName,LastName=:lastName
         self::$_db->query($sql);
         
         self::$_db->bind(":instructorid",$ratingToUpdate->getInstructorID());
         self::$_db->bind(":rating",$ratingToUpdate->getRating());
         self::$_db->bind(":review",$ratingToUpdate->getReview());
         self::$_db->bind(":courseID",$ratingToUpdate->getCourseID());
-        self::$_db->bind(":studentID",$ratingToUpdate->getCourseID());
+        self::$_db->bind(":studentID",$ratingToUpdate->getStudentID());
         self::$_db->bind(":date",$ratingToUpdate->getDate());
         self::$_db->bind(":ratingid",$ratingToUpdate->getRatingID());
+        // self::$_db->bind(":firstName",$ratingToUpdate->getFirstName());
+        // self::$_db->bind(":lastName",$ratingToUpdate->getLastName());
 
         self::$_db->execute();
        // return self::$_db->rowCount();

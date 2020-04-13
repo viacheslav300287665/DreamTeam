@@ -111,6 +111,8 @@ switch ($_SERVER["REQUEST_METHOD"])   {
         $rating->setStudentID($requestData->StudentID);
         $rating->setDate($requestData->Date);
         $rating->setRatingID($requestData->RatingID);
+        // $rating->setFirstName($requestData->FirstName);
+        // $rating->setLastName($requestData->LastName);
         
         $result = RatingDAO::updateRating($rating);
         header('Content-Type: application/json');
