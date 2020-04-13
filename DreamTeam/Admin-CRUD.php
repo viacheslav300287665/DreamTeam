@@ -94,7 +94,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "deletestudent")  {
 }
 
 //show
-Page::header();
+Page::headerForAdminCRUD();
 Page::listCourses(CourseDAO::getCourses());
 //If someone clicked Edit
 if (isset($_GET["action"]) && $_GET["action"] == "edit")  {
@@ -117,7 +117,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "editinstructor")  {
 Page::createInstructorForm(CourseDAO::getCourses());
 
 Page::listStudents(StudentDAO::getUsers());
-Page::footer();
+Page::footerForAdminCRUD();
 
 
 ?>
