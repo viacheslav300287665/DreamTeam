@@ -73,7 +73,6 @@ if (!empty($_GET)) {
             else {  
                 $errors[] = "Cannot Find Instructor, Please try again!"; 
             Page::showErrorsList($errors);                            
-             Page::footerforProfessor();
                 //exit();
            }
          }
