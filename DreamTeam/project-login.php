@@ -7,13 +7,6 @@ require_once("inc/Utility/StudentDAO.class.php");
 require_once("inc/Utility/PDOService.class.php");
 require_once("inc/Utility/LoginManager.class.php");
 require_once("inc/Utility/Page.class.php");
-
-
-/**
- * To login-> UserName: cprydden0
- * Password: cprydden0
- */
-
  
 //Check if the form was posted
 if (!empty($_POST)) {
