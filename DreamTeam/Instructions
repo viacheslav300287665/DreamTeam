@@ -1,0 +1,4 @@
+For Laravel to run: Go to laravel\LogoutPage, open cmd with current directory, enter php artisan serve (keep the cmd open)
+For Codeigniter to run: Go to codeigniter\aboutpage, open cmd with current directory, enter php spark serve (keep the cmd open)
+Two cmd shells will be open, one for laravel, one for codeigniter :)
+That it.
