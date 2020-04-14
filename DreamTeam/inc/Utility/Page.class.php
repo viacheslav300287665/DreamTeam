@@ -66,7 +66,7 @@ public static function headerForAdminCRUD() { ?>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <a href="project-logout.php">Logout</a>
+    <a href="pro-logout.php">Logout</a>
     
   </body>
 </html>
@@ -128,7 +128,7 @@ public static function headerForAdminCRUD() { ?>
 						</button>
 					</div>
                     <div class="text-center p-t-90">
-                        <a class="txt1" href="project-registration.php">
+                        <a class="txt1" href="pro-registration.php">
                             Click here to SignUp
                         </a>
                         </div>
@@ -270,7 +270,7 @@ static function showRegistrationForm() { ?>
 				        </button>
 					</div>
 					<div class="text-center p-t-90">
-                        <a class="txt1" href="project-login.php">
+                        <a class="txt1" href="pro-login.php">
                             Already have an account?
                         </a>
 					</div>
@@ -793,7 +793,7 @@ public static function listCourses(array $courses) { ?>
                     </div>
                     <div class="col-lg-7 text-center text-lg-right order-1 order-lg-2">
                         <div class="footer-menu">
-                            <a href="project-logout.php">Logout</a>
+                            <a href="pro-logout.php">Logout</a>
                         </div>
                     </div>
                 </div>

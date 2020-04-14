@@ -147,7 +147,7 @@ Page::footerForAdminCRUD();
 }else
 {
     session_destroy();
-    header("Location: project-login.php");
+    header("Location: pro-login.php");
 }
 
 

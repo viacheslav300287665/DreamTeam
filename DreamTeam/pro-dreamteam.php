@@ -135,7 +135,7 @@ if (!empty($_GET)) {
                 Page::reviewsSection($reviews, $averageForInstructor, $instructor);
                 Page::ratingsForm($courses, $instructor);
             //Everyone call your alias as a dreamteam, otherwise you are gonna get an error!!           
-            //header("Location: http://localhost/dreamteam/project-proffessor.php?search=" . $_POST["firstname"] . "+" . $_POST["lastname"]  . "&action=searchButton&searchButton=");
+            //header("Location: http://localhost/dreamteam/pro-dreamteam.php?search=" . $_POST["firstname"] . "+" . $_POST["lastname"]  . "&action=searchButton&searchButton=");
         }
     
     

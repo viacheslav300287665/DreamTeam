@@ -22,7 +22,7 @@ class LoginManager  {
             session_destroy();
 
             //Send them back to the login pages
-            header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-login.php');
+            header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/pro-login.php');
 
             return false;
 

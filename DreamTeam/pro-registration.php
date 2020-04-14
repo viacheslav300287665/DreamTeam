@@ -25,7 +25,7 @@ if ($_POST["action"] == "create")    {
     //Send the section to the DAO to be created
     StudentDAO::createStudent($newStudent);
 
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/project-login.php');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/pro-login.php');
 
     }
 }
