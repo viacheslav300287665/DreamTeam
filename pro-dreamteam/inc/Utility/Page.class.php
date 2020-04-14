@@ -358,15 +358,15 @@ public static function listCourses(array $courses) { ?>
                                     </tr>
                                     <tr>
                                         <td>Course Short Name</td>
-                                    <td><input type="text" name="courseshortname" value="<?php echo $courseToEdit->getCourseShortName(); ?>"></td>
+                                    <td><input type="text" name="courseshortname" value="<?php echo $courseToEdit->getCourseShortName(); ?>" required></td>
                                </tr>
                                <tr>
                                     <td>Course Long Name</td>
-                                    <td><input type = "text" name = "courselongname" value="<?php echo $courseToEdit->getCourseLongName(); ?>"></td>
+                                    <td><input type = "text" name = "courselongname" value="<?php echo $courseToEdit->getCourseLongName(); ?>" required></td>
                                </tr>
                                 </table>
                                 <input type="hidden" name="action" value="edit">
-                                <input type="hidden" name="courseid" value="<?php  echo $courseToEdit->getCourseID(); ?>">
+                                <input type="hidden" name="courseid" value="<?php  echo $courseToEdit->getCourseID(); ?>" >
                                 <input type="submit" class="btn btn-success" value="edit">
                                 
                                 
@@ -904,18 +904,18 @@ public static function listCourses(array $courses) { ?>
                     </tr>
                     <tr>
                         <td>Instructor First Name</td>
-                    <td><input type="text" name="instructorfirstname" value="<?php echo $instructorToEdit->getFirstName(); ?>"></td>
+                    <td><input type="text" name="instructorfirstname" value="<?php echo $instructorToEdit->getFirstName(); ?>" required></td>
                </tr>
                <tr>
                     <td>Instructor Last Name</td>
-                    <td><input type = "text" name = "instructorlastname" value="<?php echo $instructorToEdit->getLastName(); ?>"></td>
+                    <td><input type = "text" name = "instructorlastname" value="<?php echo $instructorToEdit->getLastName(); ?>" required></td>
                </tr>
 
                
             
                <tr>
                     <td>Instructor Email</td>
-                    <td><input type = "text" name = "instructoremail" value="<?php echo $instructorToEdit->getEmail(); ?>"></td>
+                    <td><input type = "text" name = "instructoremail" value="<?php echo $instructorToEdit->getEmail(); ?>" required></td>
                </tr>
                 </table>
                 <input type="hidden" name="action" value="editinstructor">
