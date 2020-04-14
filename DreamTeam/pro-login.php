@@ -30,7 +30,7 @@ if (!empty($_POST)) {
                 header('Location: Admin-CRUD.php');
             }else{
             //Send the user to the user managment page Lab09SHi_56789-updateaccount.php
-            header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/project-proffessor.php');
+            header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/pro-dreamteam.php');
             }
         }
 
