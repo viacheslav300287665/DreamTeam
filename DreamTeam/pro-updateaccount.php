@@ -15,18 +15,18 @@ if (!empty($_POST)) {
     if($_POST["action"] == "logout"){
 
         $test = $_SESSION['user'];
-        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-logout.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/pro-logout.php');
     }
     else if($_POST["action"] == "search"){
 
         $test = $_SESSION['user'];
-        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-proffessor.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/pro-dreamteam.php');
         var_dump($_POST);
     }
     else if($_POST["action"] == "create"){
 
         $test = $_SESSION['user'];
-        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/project-proffessor.php');
+        header('Location: http://' . $_SERVER['HTTP_HOST']. dirname($_SERVER['PHP_SELF']) .'/pro-dreamteam.php');
     }
 }
 //Verify the Login

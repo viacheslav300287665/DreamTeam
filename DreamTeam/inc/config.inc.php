@@ -1,7 +1,7 @@
 <?php
 //////////////
 $urlpeices = explode("/",$_SERVER['REQUEST_URI']);
-$api_url = "http://localhost";
+$api_url = "http://localhost:8080";
 
 for ($i = 0; $i < count($urlpeices) -1; $i++)   {
     $api_url .= "/".$urlpeices[$i];
