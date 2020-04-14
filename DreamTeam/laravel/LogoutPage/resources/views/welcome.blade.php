@@ -67,13 +67,16 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                 
+
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
                     Thank You!
+                </div>
+                <div class="links">
+                    <a href="http://localhost:8080">About Us!</a>
                 </div>
             </div>
         </div>
