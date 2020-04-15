@@ -38,7 +38,7 @@ switch ($_SERVER["REQUEST_METHOD"])   {
     //YARC Id=6&Name=Sally Hill&City=Vancouver&Address=66 Royal Ave
     RatingDAO::initialize();
     //New Rating
-
+//Set values for a new rating
     $rating = new Rating();
     $rating->setInstructorID($requestData->InstructorID);
     $rating->setCourseID($requestData->CourseID);
@@ -46,9 +46,10 @@ switch ($_SERVER["REQUEST_METHOD"])   {
     $rating->setReview($requestData->Review);
     $rating->setStudentID($requestData->StudentID);
     $rating->setDate($requestData->Date);
-      
+      //Create a new rating!
     $result = RatingDAO::createRating($rating);
     header('Content-Type: application/json');
+    //Encode the result!
     echo json_encode($result);
 
     break;
@@ -56,19 +57,10 @@ switch ($_SERVER["REQUEST_METHOD"])   {
     //If there was a request with an id return that customer, if not return all of them!
     case "GET":
 
-      //  if (isset($requestData->id))    {
-
-            //Return the customer object
-         //   $sc = CustomerMapper::getCustomer($requestData->id);
-
-            //Set the header
-       //     header('Content-Type: application/json');
-            //Barf out the JSON version
-       //     echo json_encode($sc->jsonSerialize());
-
-       // } else {
-            //All the customers!
+      
+            //If request data is search!
             if (isset($requestData->search)){
+                //Get all necessary information for an instructor!
                 InstructorDAO::initialize();
                 $splitFullName = explode(" ", $requestData->search);
                 $firstName = $splitFullName[0];
@@ -82,84 +74,68 @@ switch ($_SERVER["REQUEST_METHOD"])   {
             $serializedRatings = array();
             $serializedCourses = array();
             $serializedInstructor;
+            //Serialize ratings!
             foreach ($ratings as $rating){
                 $serializedRatings[] = $rating->jsonSerialize();         
             }
+            //Serialize courses!
             foreach ($courses as $course)    {
                 $serializedCourses[] = $course->jsonSerialize();
-            }       
+            }  
+            //Serialize Instructor     
             $serializedInstructor = $instructor->jsonSerialize();
             //Return the results
             //Set the header
             header('Content-Type: application/json');
-            //Return the entire array
+            //Return the array with JSON values!
             $myJSON[] = $serializedRatings; 
             $myJSON[] = $serializedCourses;
             $myJSON[] = $serializedInstructor;
             echo json_encode($myJSON);
             } 
             else{
+                //Init daos
                 InstructorDAO::initialize();
                 $instructor = InstructorDAO::getInstructors();
                 RatingDAO::initialize();
                 CourseDAO::initialize();
                 $instructorFullName = array();
-                // $instructorLN = array();
 
                 foreach($instructor as $instructorr){
-                    // $instructorFirstName = new Instructor();
-                    // $instructorLastName = new Instructor();
                     $ratings[] = RatingDAO::getInstructorReviews($instructorr);                
                     $courses[] = CourseDAO::getInstructorCourse($instructorr);
                     $instructorFullName[] = $instructorr->getFirstName()." ".$instructorr->getLastName();
-                    // $instructorLastName->setLastName($instructorr->getLastName());
-                    // $instructorFN[] = $instructorFirstName;
-                    // $instructorLN[] = $instructorLastName;
                 }
-            //Walk the customers and add them to a serialized array to return.
             $serializedRatings = array();
             $serializedCourses = array();
             $serialized = array();
             $serializedInstructor;
+            //Add serialized ratings to an array
             foreach ($ratings as $rating){
-                foreach($rating as $ratingg){
-                    // $serializedRatings[] = $ratingg->jsonSerialize();         
+                foreach($rating as $ratingg){         
                     $serialized[] = $ratingg->jsonSerialize();         
                 }
             }
+            //Add serialized courses to an array
             foreach ($courses as $course)    {
                 foreach($course as $coursee){
-                    //$serializedCourses[] = $coursee->jsonSerialize();
                     $serialized[] = $coursee->jsonSerialize();
                 }
             }    
-            foreach ($instructor as $instructorr)    {
-                // $serializedInstructor[] = $instructorr->jsonSerialize();
+            //Add serialized instructors to an array
+            foreach ($instructor as $instructorr)    {               
                 $serialized[] = $instructorr->jsonSerialize();
             }
-            // foreach ($instructorFN as $instructorr)    {
-            //     // $serializedInstructor[] = $instructorr->jsonSerialize();
-            //     $serial[] = $instructorr->jsonFirstSerializeForAutoFill();
-            // }
-            // $serialized[] = $serial;
-
-            // foreach ($instructorLN as $instructorr)    {
-            //     // $serializedInstructor[] = $instructorr->jsonSerialize();
-            //     $seriall[] = $instructorr->jsonLastSerializeForAutoFill();
-            // }
+           //Add serialized instructor to an array
             $serialized[] = $instructorFullName;
 
-            //Return the results
-            //Set the header
+  
             header('Content-Type: application/json');
-            //Return the entire array
-            // $myJSON[] = $serializedRatings; 
-            // $myJSON[] = $serializedCourses;
-            // $myJSON[] = $serializedInstructor;
+           //Return serialized array!
             echo json_encode($serialized);
             }                   
     break;
-   
+   //If put, its time to update!
     case "PUT":
         RatingDAO::initialize();
         //Update Rating
@@ -170,21 +146,19 @@ switch ($_SERVER["REQUEST_METHOD"])   {
         $rating->setReview($requestData->Review);
         $rating->setStudentID($requestData->StudentID);
         $rating->setDate($requestData->Date);
-        $rating->setRatingID($requestData->RatingID);
-        // $rating->setFirstName($requestData->FirstName);
-        // $rating->setLastName($requestData->LastName);
-        
+        $rating->setRatingID($requestData->RatingID);      
+        //Update the rating!
         $result = RatingDAO::updateRating($rating);
         header('Content-Type: application/json');
+        //Encode result!
         echo json_encode($result);
 
     break;
-
+//If delete, its time to delete!
     case "DELETE":
-        //In YARC send the request as key=value
-        //Pull the ID, send it to delete via the customer mapper and return the result.
-        // $result = CustomerMapper::deleteCustomer($requestData->id);
+       
         RatingDAO::initialize();
+        //Delete rating!
         $result = RatingDAO::deleteRating($requestData->id);
         //Set the header
         header('Content-Type: application/json');

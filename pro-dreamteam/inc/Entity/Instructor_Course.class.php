@@ -4,8 +4,11 @@
 //     CourseID INT NOT NULL,
 
 class Instructor_Course{
+    //Attributes
     private $InstructorID;
     private $CourseID;
+
+    //Setters
 
     public function setInstructorID(int $instructorID){
         $this->InstructorID=$instructorID;
@@ -13,6 +16,8 @@ class Instructor_Course{
     public function setCourseID(int $courseID){
         $this->CourseID=$courseID;
     }
+
+    //Getters
 
     public function getInstructorID():int{
         return $this->InstructorID;

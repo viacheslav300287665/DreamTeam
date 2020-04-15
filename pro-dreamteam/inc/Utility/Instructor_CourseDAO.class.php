@@ -10,7 +10,7 @@ class Instructor_CourseDAO{
         //Remember to send in the course name
         self::$_db=new PDOService('Instructor_Course');
     }
-    
+    //Add a new course for instructor
     static function createInstructor_Course(Instructor_Course $newInstructorCourse) {
 
         //Create means INSERT
@@ -25,6 +25,7 @@ class Instructor_CourseDAO{
         
         return self::$_db->lastInsertedId();
     }
+    //Get all instructor courses
     static function getInstructor_Courses() {
         $sql = "SELECT Distinct Instructor.FirstName,Instructor.LastName,Course.CourseShortName,Course.CourseLongName,
                         Instructor_Course.InstructorID,Instructor_Course.CourseID

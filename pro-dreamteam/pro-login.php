@@ -34,7 +34,9 @@ if (!empty($_POST)) {
             }
         }
 
-    }else{
+    }
+    //If cannot find a user, show an error!
+    else{
         $errors[] = "Your Username or Password is wrong!";
         Page::showErrorsList($errors);
      }

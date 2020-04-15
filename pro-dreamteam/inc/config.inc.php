@@ -12,7 +12,7 @@ $api_url .= "/RestAPI.php";
 define('API_URL', $api_url);
 
 
-//DO NOT MODIFY THE CODE ABOVE THIS LINE
+
 
 //Set all the database things!
 define("DB_HOST", "localhost");  

@@ -44,7 +44,7 @@ class StudentDAO   {
         return self::$_db->singleResult();
 
     }
-
+    //Get all student users
     static function getUsers()  {
         $sql = "SELECT * FROM Student;";
 
@@ -57,6 +57,7 @@ class StudentDAO   {
         return self::$_db->resultSet();
 
     }
+    //Update a student
     static function updateStudent (Student $studentToUpdate) {
         //update means UPDATE query
     $sql = "UPDATE Student SET FirstName=:firstname,LastName=:lastname,Email=:email,Username=:username,Password=:password
@@ -77,7 +78,7 @@ class StudentDAO   {
 
 
 }
-
+//Delete a student
 static function deleteStudent(int $studentID) {
 
 

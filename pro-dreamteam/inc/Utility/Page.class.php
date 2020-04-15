@@ -3,6 +3,8 @@ class Page  {
 
     public static $title = "Online Ratings";
 
+    //Header for Page
+
     static function header() { ?>
             <!DOCTYPE html>
             <html lang="en">
@@ -35,11 +37,13 @@ class Page  {
             <body>
            
     <?php }
-
+    //Footer for page
     static function footer()    { ?>
            </body>
             </html>
     <?php }
+
+    //Header for Admin Page
 public static function headerForAdminCRUD() { ?>
     
     <!doctype html>
@@ -59,6 +63,7 @@ public static function headerForAdminCRUD() { ?>
     <h1 class="text-center font-weight-bolder">Welcome, Admin!</h1>
 
         <?php }
+        //Footer for Admin Page
  public static function footerForAdminCRUD() { ?>
     
     <!-- Optional JavaScript -->
@@ -72,6 +77,7 @@ public static function headerForAdminCRUD() { ?>
 </html>
 
 <?php }
+//Show user details in table function
     static function showUserDetails(User $u) { ?>
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
     <table class="table table-borderless">
@@ -98,7 +104,7 @@ public static function headerForAdminCRUD() { ?>
 
    
 <?php }
-
+//Show Login form function in Login Page
     static function showLogin() { ?>    
     <div class="limiter">
 		<div class="container-login100" style="background-image: url('inc/Utility/css/images/bg-01.jpg');">
@@ -138,7 +144,7 @@ public static function headerForAdminCRUD() { ?>
 	</div>
 
     <?php }
-
+//Show search form function in Proffesor Page
 static function showSearchForm() { ?>    
     <div class="limiter">
 		<div class="container-login100" style="background-image: url('inc/Utility/css/images/bg-01.jpg');">
@@ -203,12 +209,12 @@ static function showSearchForm() { ?>
 	</div>
 
     <?php }
-
+//Say thank you to a user when logged out!
     static function thankYou(){?>
             <label for="thankyou">Thank You!</label>
     <?php
     }
-
+//Abandoned function, we didnt use that, just for testing
     static function listProffesorReviews(Instructor $instructor, array $ratings, $courses) { ?>
             <h1>Rating for Proffesor <?php echo $instructor->getFirstName() . " " . $instructor->getLastName() ?></h1>
             <h4>Courses that <?php echo $instructor->getFirstName() . " " . $instructor->getLastName() ?> is teaching </h1>
@@ -231,7 +237,7 @@ static function showSearchForm() { ?>
             ?>
             </table>
      <?php }
-
+//Show registration fomr in Registration page
 static function showRegistrationForm() { ?>    
     <div class="limiter">
 		<div class="container-login100" style="background-image: url('inc/Utility/css/images/bg-01.jpg');">
@@ -282,7 +288,7 @@ static function showRegistrationForm() { ?>
 
 	</div>
     <?php }
-
+//List courses table function
 public static function listCourses(array $courses) { ?>
     <h3 class="font-italic">List of available Courses</h3>
         <table align="center" class="table table-hover table-borderless w-75 p-3">
@@ -344,7 +350,7 @@ public static function listCourses(array $courses) { ?>
     
     <?php
                         }
-    
+    //Edit course form function
                         public static function editCourseForm(Course $courseToEdit) { ?>
                             <hr>
                             <form id="editcourse" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>" METHOD="POST">
@@ -374,6 +380,7 @@ public static function listCourses(array $courses) { ?>
                     
                         <?php
         }
+        //Header for Professor page
     static function headerForProfessor() { ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -438,7 +445,7 @@ public static function listCourses(array $courses) { ?>
         <body>
        
 <?php }
-
+//Search form for professor page
     static function searchFormProfessor($autofillinfo) { ?>
         <!-- Page Preloder -->
         <div id="preloder">
@@ -586,7 +593,7 @@ public static function listCourses(array $courses) { ?>
                 </script>
                 <br><br/>
 <?php }
-
+//Show the reviews section for instructor, takes instructor to show reviews, reviews to show, and average rating for that instructor
     static function reviewsSection(array $reviews, float $avgForInstructor, Instructor $instructor) { ?>
         <!-- Filter Section Begin -->
     <section class="filter-section spad">
@@ -615,7 +622,7 @@ public static function listCourses(array $courses) { ?>
                 <div class="col-lg-9">
                     <div class="row">
                         <?php
-            
+                        //For each review show review values!
                         foreach ($reviews as $review) {?>
                         <div class="col-lg-4 col-sm-6">
                             <a class="arrange-items">
@@ -681,7 +688,7 @@ public static function listCourses(array $courses) { ?>
     </section>
     <!-- Filter Section End -->
     <?php }
-
+    //Create a new rating form which takes the courses that instructor teaches and returns instructor id values
     static function ratingsForm($courses, Instructor $instructor) { ?>
 
         <!-- Contact Section Begin -->
@@ -725,7 +732,7 @@ public static function listCourses(array $courses) { ?>
     </section>
 
     <?php }
-
+//Edit a rating form which is only can be accessed and visible for a student that has a review belonging to him
     static function editRatingsForm($courses, Instructor $instructor, $rating) { ?>
 
         <!-- Contact Section Begin -->
@@ -778,7 +785,7 @@ public static function listCourses(array $courses) { ?>
 
     <?php }
 
-
+//Footer for Professor Page
     static function footerforProfessor() { ?>
 
         <!-- Footer Section Begin -->
@@ -858,7 +865,7 @@ public static function listCourses(array $courses) { ?>
                 
             <?php }
         ////////////////////////////////////////////////////////////////////
-        ///create Instructor
+        ///Create a new Instructor form
         /////////////////////////////////////////////////////////////////
         public static function createInstructorForm(array $courses) {?>
             <hr>
@@ -888,7 +895,7 @@ public static function listCourses(array $courses) { ?>
         <?php
                             }
         
-        //edit Instructor
+        //edit an Instructor form
         
         public static function editInstructorForm(Instructor $instructorToEdit,array $courses) { ?>
             <hr>
@@ -971,7 +978,7 @@ public static function listCourses(array $courses) { ?>
                 ?>
                 </ul> 
             <?php }
-
+//List of instructor's courses
 public static function listInstructorCourses(array $instructorCourses) { ?>
     <h3 class="font-italic">List of Courses each instructor is teaching</h3>
         <table align="center"class="table table-hover table-borderless w-75 p-3">
@@ -1006,7 +1013,7 @@ public static function listInstructorCourses(array $instructorCourses) { ?>
             </script>
         
     <?php }
-
+//Create a new course for instructor
 public static function createInstructorCourse(array $instructor,array $course) {?>
     <hr>
     

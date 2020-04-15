@@ -17,6 +17,7 @@ require_once("inc/Utility/Page.class.php");
 //Initialise the DAOs
 session_start();
 $user=$_SESSION['user'];
+//If verify login is true and username is admin - proceed
 if(LoginManager::verifyLogin() && $user->getUsername()=="admin")
 {
 
@@ -138,6 +139,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "editinstructor")  {
     //Render the  Edit Section form with the section to edit and  alist of the courses.
     Page::editInstructorForm($instructorToEdit,CourseDAO::getCourses());
 }   
+//Create all pages pages functions
 Page::createInstructorForm(CourseDAO::getCourses());
 Page::listInstructorCourses(Instructor_CourseDAO::getInstructor_Courses());
 Page::createInstructorCourse(InstructorDAO::getInstructors(),CourseDAO::getCourses());
@@ -146,6 +148,7 @@ Page::listStudents(StudentDAO::getUsers());
 Page::footerForAdminCRUD();
 }else
 {
+    //Destroy a session if session authentication failed
     session_destroy();
     header("Location: pro-login.php");
 }

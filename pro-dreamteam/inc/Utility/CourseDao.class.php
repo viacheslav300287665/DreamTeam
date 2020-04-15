@@ -27,6 +27,7 @@ class CourseDAO  {
         //Return resultSet
         return self::$_db->resultSet();
     }
+    //Get all instructor courses
     static function getInstructorCourse(Instructor $instructor){
         $sql = "SELECT Course.CourseID, Course.CourseShortName, Course.CourseLongName FROM Course, Instructor_Course where Instructor_Course.InstructorID=:instructorid and Instructor_Course.CourseID = Course.CourseID;";
         self::$_db->query($sql);
@@ -34,7 +35,7 @@ class CourseDAO  {
         self::$_db->execute();
         return self::$_db->resultSet();
     }
-    
+    //Create a new course
     static function createCourse(Course $newCourse) {
 
         //Create means INSERT
@@ -51,13 +52,13 @@ class CourseDAO  {
         
         return self::$_db->lastInsertedId();
     }
+    //Update a course
     static function updateCourse (Course $courseToUpdate) {
         //update means UPDATE query
     $sql = "UPDATE Course SET CourseShortName = :courseshortname,CourseLongName=:courselongname
             WHERE CourseID=:courseid;";
         
     self::$_db->query($sql);
-    
     self::$_db->bind(":courseshortname",$courseToUpdate->getCourseShortName());
     self::$_db->bind(":courselongname",$courseToUpdate->getCourseLongName());
     self::$_db->bind(":courseid",$courseToUpdate->getCourseID());
@@ -69,9 +70,10 @@ class CourseDAO  {
 
 
 }
+//Get a course
 static function getCourse(int $courseID)  {
 
-    //Gget means get one
+    //Get means get one
     $sql="SELECT * FROM Course WHERE CourseID=:courseid;";
 
     //QUERY, BIND, EXECUTE, RETURN
@@ -80,6 +82,7 @@ static function getCourse(int $courseID)  {
     self::$_db->execute();
     return self::$_db->singleResult();    
 }
+//Delete a course
 static function deleteCourse(int $courseID) {
 
 

@@ -8,7 +8,7 @@ class InstructorDAO  {
       //Create the PDOService instance locally, be sure to specify the class.
       self::$_db=new PDOService('Instructor');
     }
-
+    //Create a new instructor
     static function createInstructor(Instructor $newInstructor) {
 
         //Create means INSERT
@@ -24,7 +24,7 @@ class InstructorDAO  {
         
         return self::$_db->lastInsertedId();
     }
-    
+    //Get an instructor by id
     static function getInstructor(int $instructorID)  {
 
         //Gget means get one
@@ -36,6 +36,7 @@ class InstructorDAO  {
         self::$_db->execute();
         return self::$_db->singleResult();    
     }
+    //Get an instructor by fullname
     static function getInstructorByName(string $firstName, string $lastName){
         $sql = "SELECT * FROM Instructor where FirstName=:firstname AND LastName=:lastname;";
         self::$_db->query($sql);
@@ -44,7 +45,7 @@ class InstructorDAO  {
         self::$_db->execute();
         return self::$_db->singleResult();
     }
-    
+    //Get all instructors
     static function getInstructors() {
 
         //No parameters so no bind
@@ -57,7 +58,7 @@ class InstructorDAO  {
         //Return results
         return self::$_db->resultSet();
     }
-    
+    //Update an instructor
     static function updateInstructor (Instructor $instructorToUpdate) {
             //update means UPDATE query
         $sql = "UPDATE Instructor SET FirstName=:firstname,LastName=:lastname,Email=:email
@@ -77,7 +78,7 @@ class InstructorDAO  {
 
 
     }
-    
+    //Delete an instructor by id
     static function deleteInstructor(int $instructorID) {
 
 

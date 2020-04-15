@@ -8,6 +8,7 @@ class Rating{
     // Rating INT NOT NULL,
     // Review VARCHAR(255),
 
+    //Attributes
 private $RatingID;
 private $InstructorID;
 private $CourseID;
@@ -81,6 +82,7 @@ public function getFirstName():string{
 public function getLastName():string{
     return$this->LastName;
 }
+//JSON Serialization with std class
 public function jsonSerialize()
 {
     $obj = new stdClass;
