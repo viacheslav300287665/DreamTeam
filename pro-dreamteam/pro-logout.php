@@ -11,10 +11,17 @@ require_once("inc/Utility/Page.class.php");
 session_start();
 $a = $_SESSION['user'];
 $check = $a->getUsername();
+if($check=="admin"){
+    unset($_SESSION['user']);
+    session_destroy();
+
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .'/pro-login.php');
+}
 unset($_SESSION['user']);
 
 //Destroy the sesison
 session_destroy();
+
 header('Location: http://localhost:8000');
 Page::header();
 
