@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Developed by:
+ * Dikshit Sharma 	300287961 
+ * Robin Singh Sidhu	300292039 
+ * Viacheslav Sierkov 	300287665
+ */
 require_once("inc/config.inc.php");
 require_once("inc/Entity/Instructor.class.php");
 require_once("inc/Entity/Rating.class.php");
@@ -88,8 +93,7 @@ if (!empty($_GET)) {
             //If the format is not matches, show an error!
             else {  
                 $errors[] = "Cannot Find Instructor, Please try again!"; 
-            Page::showErrorsList($errors);                            
-                //exit();
+                Page::showErrorsList($errors);                            
            }
          }
     }
@@ -167,8 +171,6 @@ if (!empty($_GET)) {
                 "Review" => $_POST["experience"],
                 "StudentID" => $student->getStudentID(),
                 "RatingID" => $_POST["ratingID"],
-                // "FirstName" => $student->getFirstName(),
-                // "LastName" => $student->getLastName(),
                 "Date" => $date
             );     
             //Update it based on post data!    
