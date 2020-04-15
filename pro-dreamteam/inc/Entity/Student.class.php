@@ -9,6 +9,8 @@ class Student {
     // Username VARCHAR(25) NOT NULL,
     // Password VARCHAR(255) NOT NULL
 
+    //Attributes
+
     private $StudentID ;
     private $FirstName;
     private $LastName;
@@ -56,11 +58,13 @@ class Student {
     public function getPassword():string{
         return $this->Password;
     }
+    //Verify a student password function
     function verifyPassword(string $passwordToVerify) {
        
         //Return a boolean based on verifying if the password given is correct for the current user
         return password_verify($passwordToVerify,$this->getPassword());     
     }
+    //JSON Serialization with std class
     public function jsonSerialize() {
     $obj = new stdClass;
     $obj->StudentID = $this->StudentID;

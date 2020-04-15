@@ -51,6 +51,7 @@ class Instructor {
     public function getEmail():string{
         return $this->Email;
     } 
+    //JSON Serialization with std class
     public function jsonSerialize()
     {
         $obj = new stdClass;

@@ -11,7 +11,7 @@ class RatingDAO  {
       //Create the PDOService instance locally, be sure to specify the class.
       self::$_db=new PDOService('Rating');
     }
-
+    //Create a new rating
     static function createRating(Rating $newRating) {
 
         //Create means INSERT
@@ -30,7 +30,7 @@ class RatingDAO  {
       
 
     }
-    
+    //Get a particular rating
     static function getRating(int $ratingID)  {
 
         //Gget means get one
@@ -43,7 +43,7 @@ class RatingDAO  {
         return self::$_db->singleResult();
        
     }
-
+    //Get all ratings
     static function getRatings() {
 
         //No parameters so no bind
@@ -56,6 +56,7 @@ class RatingDAO  {
         //Return results
         return self::$_db->resultSet();
     }
+    //Get Reviews for particular instructor
     static function getInstructorReviews(Instructor $instructor){
         $sql = "SELECT Course.CourseShortName, Student.FirstName, Student.LastName, Rating.RatingID, Rating.Date, Rating.CourseID, Rating.StudentID, Rating.InstructorID, Rating.Rating, Rating.Review 
         FROM Instructor, Rating, Student, Course 
@@ -66,7 +67,7 @@ class RatingDAO  {
         self::$_db->execute();
         return self::$_db->resultSet();
     }
-    
+    //Update a rating
     static function updateRating (Rating $ratingToUpdate) {
             //update means UPDATE query
         $sql = "UPDATE Rating SET InstructorID = :instructorid,CourseID=:courseID, StudentID = :studentID,Date = :date, Rating=:rating,Review=:review
@@ -93,7 +94,7 @@ class RatingDAO  {
 
 
     }
-    
+    //Delete rating
     static function deleteRating(int $ratingID) {
 
 
